@@ -224,3 +224,22 @@ background: #000000;
 
 /* ==================================== FIM DOS ÍCONES PESQUISADO NA INTERNET ====================================*/
 
+ul li.html a:before{
+    background: orange;
+}
+ul li.css a:before{
+    background: rgb(26, 103, 245);
+}
+
+ul li.js a:before{
+    background: rgb(212, 212, 7);
+}
+ul li.js a:before{
+    background: rgb(212, 212, 7);
+}
+ul li.nodejs a:before{
+    background: rgb(108, 167, 20);
+}
+ul li.iot a:before{
+    background: purple;
+}
