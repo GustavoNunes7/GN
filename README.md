@@ -114,16 +114,3 @@
 
 ## ⚡ Sobre mim em uma frase
 💡 "Evoluindo todos os dias na tecnologia e na vida.")  
-- 📩 [Email Pessoal](mailto:nunesgugu77@gmail.com)  
-- 💼 [Email Profissional](mailto:gununes.tech7@gmail.com)  
-
----
-
-## 🙌 Versículo
-> "Não fiquem com medo, pois estou com vocês; não se apavorem, pois eu sou o seu Deus. Eu lhes dou forças e os ajudo; eu os protejo com a minha forte mão."  
-> 📖 Isaías 41:10  
-
----
-
-## ⚡ Sobre mim em uma frase
-💡 "Evoluindo todos os dias na tecnologia e na vida."
