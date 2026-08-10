@@ -1,67 +1,251 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gustavo Nunes </title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="icon" type="image/jpg" href="./images/Logo.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustavo | Desenvolvedor de Sistemas</title>
+    <meta name="description" content="Portfólio profissional de Gustavo, Desenvolvedor de Sistemas focado em construir soluções digitais eficientes e modernas.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>
 
-  <body>
-    <header>
-        <img src="./images/foto.jpg" alt="Gustavo Nunes" class="foto"/>
-        <h1>Gustavo Nunes</h1>
-        <p>@Gununes.7</p>
-        <p>Estudante de Desenvolvimento de Sistemas 🖥️</p>
-        <hr/>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Gustavo<span>.dev</span></a>
+            
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#sobre" class="nav-link">Sobre Mim</a></li>
+                    <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                    <li><a href="#certificados" class="nav-link">Certificados</a></li>
+                    <li><a href="#contato" class="nav-link btn-contato-nav">Contato</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
     </header>
 
     <main>
-        <section class="card">
-            <h2>Sobre mim 😎</h2><br>
-            <a href="./páginas/sobreMim.html" target="_self"> Ver Sobre mim</a>
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content reveal">
+                    <p class="hero-greeting">Olá, eu sou <strong>Gustavo</strong></p>
+                    <h1 class="hero-title">Desenvolvedor de <span>Sistemas</span></h1>
+                    <p class="hero-subtitle">
+                        Transformando ideias em soluções digitais através de código, tecnologia e criatividade. 
+                        Focado em performance, boas práticas e arquitetura limpa.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+                        <a href="#contato" class="btn btn-secondary">Entre em Contato</a>
+                    </div>
+                </div>
+                <div class="hero-image reveal">
+                    <img src="assets/images/seu-avatar.jpg" alt="Foto de Gustavo" onerror="this.src='https://via.placeholder.com/350x350/0A1F44/F5F7FA?text=Sua+Foto+Aqui'">
+                </div>
+            </div>
         </section>
 
-        <section class="card">
-            <h2>Habilidades 💻</h2><br>
-            <a href="./páginas/habilidades.html" target="_self"> Ver Habilidades</a>
+        <section class="sobre section" id="sobre">
+            <div class="container">
+                <h2 class="section-title reveal">Sobre Mim</h2>
+                <div class="sobre-grid">
+                    <div class="sobre-text reveal">
+                        <p>Sou apaixonado por tecnologia e programação. Construo soluções modernas que agregam valor e facilitam a vida dos usuários.</p>
+                        <p>Tenho experiência contínua em aprendizado, desenvolvendo projetos e aprofundando meus conhecimentos na área de desenvolvimento de sistemas. Meu objetivo é sempre criar código limpo, escalável e manter a melhor experiência para o usuário (UX).</p>
+                    </div>
+                    <div class="sobre-cards reveal">
+                        <div class="card-info">
+                            <span class="card-icon">📚</span>
+                            <h3>Evolução Contínua</h3>
+                            <p>Sempre estudando e aplicando novas tecnologias.</p>
+                        </div>
+                        <div class="card-info">
+                            <span class="card-icon">💡</span>
+                            <h3>Foco em Solução</h3>
+                            <p>Mais do que escrever código, busco resolver problemas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="card">
-            <h2>Projetos 📂</h2><br>
-            <a href="https://github.com/GustavoNunes7?tab=repositories" target="_blank"> Ver Projetos</a>
+        <section class="habilidades section" id="habilidades">
+            <div class="container">
+                <h2 class="section-title reveal">Habilidades & Tecnologias</h2>
+                <div class="skills-grid reveal">
+                    
+                    <div class="skill-category">
+                        <h3>Front-End</h3>
+                        <div class="tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Back-End</h3>
+                        <div class="tags">
+                            <span class="tag">Python (Exemplo)</span>
+                            <span class="tag">Node.js (Exemplo)</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Banco de Dados</h3>
+                        <div class="tags">
+                            <span class="tag">SQLite (Exemplo)</span>
+                            <span class="tag">MySQL (Exemplo)</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Ferramentas</h3>
+                        <div class="tags">
+                            <span class="tag">Git</span>
+                            <span class="tag">GitHub</span>
+                            <span class="tag">VS Code</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </section>
 
-         <section class="card">
-            <h2>Cursos e Certificados 📚</h2><br>
-            <a href="./páginas/cursos.html" target="_self">Ver Cursos</a>
+        <section class="projetos section" id="projetos">
+            <div class="container">
+                <h2 class="section-title reveal">Meus Projetos</h2>
+                <div class="projetos-grid">
+                    
+                    <article class="projeto-card reveal">
+                        <div class="projeto-img">
+                            <img src="assets/images/projeto1.jpg" alt="Screenshot do Projeto 1" onerror="this.src='https://via.placeholder.com/600x300/0A1F44/F5F7FA?text=Imagem+do+Projeto'">
+                        </div>
+                        <div class="projeto-content">
+                            <h3>Nome do Projeto Existente</h3>
+                            <p>Breve descrição do objetivo do projeto e o problema que ele resolve, baseado nos arquivos reais.</p>
+                            <div class="projeto-techs">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JS</span>
+                            </div>
+                            <div class="projeto-links">
+                                <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver Projeto</a>
+                                <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="projeto-card reveal">
+                        <div class="projeto-img">
+                            <img src="assets/images/projeto2.jpg" alt="Screenshot do Projeto 2" onerror="this.src='https://via.placeholder.com/600x300/0B3D2E/F5F7FA?text=Imagem+do+Projeto'">
+                        </div>
+                        <div class="projeto-content">
+                            <h3>Outro Projeto Incrível</h3>
+                            <p>Aqui você insere as informações reais do seu segundo projeto encontrado na sua pasta.</p>
+                            <div class="projeto-techs">
+                                <span>Tecnologia 1</span>
+                                <span>Tecnologia 2</span>
+                            </div>
+                            <div class="projeto-links">
+                                <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver Projeto</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
         </section>
 
-        <section class="card">
-            <h2>Contatos 📞</h2><br>
-            <a href="./páginas/contatos.html" target="_self"> Entre em Contato</a>
+        <section class="trajetoria section" id="trajetoria">
+            <div class="container">
+                <h2 class="section-title reveal">Trajetória e Conquistas</h2>
+                <div class="timeline reveal">
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2024 - 2026 (Exemplo)</span>
+                            <h3>Formação em Desenvolvimento (Exemplo SENAI/SESI)</h3>
+                            <p>Aprendizado focado em lógica de programação, desenvolvimento web e criação de sistemas funcionais.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Ano da Conquista</span>
+                            <h3>Projeto / Competição Existente</h3>
+                            <p>Breve descrição da sua participação, desafios superados e resultados alcançados.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </section>
 
-       
+        <section class="certificados section" id="certificados">
+            <div class="container">
+                <h2 class="section-title reveal">Cursos e Certificados</h2>
+                <div class="certificados-grid">
+                    
+                    <div class="certificado-card reveal">
+                        <span class="cert-category">Tecnologia</span>
+                        <h3>Nome do Curso Real</h3>
+                        <p class="cert-institution">Instituição Real (ex: SENAI)</p>
+                        <a href="certificados/seu-arquivo.pdf" target="_blank" class="cert-link">Visualizar Certificado &rarr;</a>
+                    </div>
+
+                    <div class="certificado-card reveal">
+                        <span class="cert-category">Desenvolvimento</span>
+                        <h3>Outro Curso Real</h3>
+                        <p class="cert-institution">Instituição</p>
+                        <a href="certificados/seu-arquivo-2.pdf" target="_blank" class="cert-link">Visualizar Certificado &rarr;</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="contato section" id="contato">
+            <div class="container reveal">
+                <div class="contato-box">
+                    <h2>Vamos transformar uma ideia em projeto?</h2>
+                    <p>Estou sempre aberto a novos desafios e oportunidades de aprendizado.</p>
+                    
+                    <div class="contato-links">
+                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            Meu LinkedIn
+                        </a>
+                        <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                            Meu GitHub
+                        </a>
+                        <a href="mailto:seu-email-real@exemplo.com" class="btn btn-outline">
+                            Enviar E-mail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-   <footer><br>
-      <ul>
-        <li>
-          <a href="https://www.instagram.com/gununes.7/" target="_blank"><i class="fab fa-instagram icon"><img src="" alt=""></i> </a>
-        </li>
-
-        <li>
-          <a href="https://www.linkedin.com/in/gustavo-nunes-da-silva7/" target="_blank"><i class="fab fa-linkedin-in icon"></i></a>
-        </li>
-
-        <li>
-          <a href="https://github.com/GustavoNunes7" target="_blank"><i class="fab fa-github icon"></i></a></li>
-        </ul>
-
-
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Gustavo. Desenvolvido com HTML, CSS e JavaScript puro.</p>
+        </div>
     </footer>
-  </body>
+
+    <script src="script.js"></script>
+</body>
 </html>
