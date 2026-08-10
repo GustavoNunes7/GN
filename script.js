@@ -1,24 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    
     /* ==========================================================================
-       1. MENU MOBILE (Abrir / Fechar)
+       1. NAVBAR & MENU MOBILE
        ========================================================================== */
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navbar = document.getElementById('navbar');
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    function toggleMenu() {
-        mobileBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
+    // Efeito Glassmorphism no scroll
+    const handleScroll = () => {
+        if (window.scrollY > 30) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Alternar menu mobile
+    const toggleMenu = () => {
+        const isActive = navMenu.classList.toggle('active');
+        hamburgerBtn.classList.toggle('active');
+        hamburgerBtn.setAttribute('aria-expanded', isActive);
         
-        // Acessibilidade
-        const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
-        mobileBtn.setAttribute('aria-expanded', !isExpanded);
-    }
+        // Bloqueia o scroll do body quando o menu está aberto
+        document.body.style.overflow = isActive ? 'hidden' : '';
+    };
 
-    mobileBtn.addEventListener('click', toggleMenu);
+    hamburgerBtn.addEventListener('click', toggleMenu);
 
-    // Fechar o menu mobile ao clicar em um link
+    // Fechar menu ao clicar num link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (navMenu.classList.contains('active')) {
@@ -28,41 +40,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       2. EFEITO NAVBAR SCROLL (Fundo Blur / Sombra)
+       2. ANIMAÇÕES DE REVEAL (INTERSECTION OBSERVER)
        ========================================================================== */
-    const navbar = document.querySelector('.navbar');
+    // Seleciona todos os elementos que possuem classes de animação de entrada
+    const revealElements = document.querySelectorAll(
+        '.reveal-fade-up, .reveal-fade-left, .reveal-fade-right, .reveal-zoom, .reveal-scale'
+    );
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.add('scrolled'); // Para manter um padding menor, mude a classe se desejar. Aqui aplicamos a sombra.
-            if(window.scrollY === 0) navbar.classList.remove('scrolled');
-        }
-    });
+    // Verifica preferência do usuário (prefers-reduced-motion) para não forçar o JS
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ==========================================================================
-       3. ANIMAÇÃO DE REVEAL ON SCROLL (Intersection Observer)
-       ========================================================================== */
-    const reveals = document.querySelectorAll('.reveal');
+    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        const revealOptions = {
+            root: null,
+            rootMargin: '0px 0px -10% 0px', // Ativa quando o elemento passa 10% da parte inferior da tela
+            threshold: 0.1
+        };
 
-    const revealOptions = {
-        threshold: 0.15, // Aciona quando 15% do elemento estiver visível
-        rootMargin: "0px 0px -50px 0px" // Dispara um pouco antes de aparecer completamente
-    };
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-revealed');
+                    // Desobserva o elemento após animar (ocorre apenas 1 vez)
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
 
-    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Se não quiser que a animação repita, descomente a linha abaixo
-                // observer.unobserve(entry.target); 
-            }
-        });
-    }, revealOptions);
-
-    reveals.forEach(reveal => {
-        revealOnScroll.observe(reveal);
-    });
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        // Fallback: se o navegador não suportar ou o usuário preferir sem animação
+        revealElements.forEach(el => el.classList.add('is-revealed'));
+    }
 
 });

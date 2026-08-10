@@ -1,116 +1,52 @@
-# 👋 Gustavo Nunes da Silva
+# Gustavo Nunes — Portfólio
 
-😎 17 anos  
-🎂 19/11/2008  
-📍 Guarulhos - SP  
+Portfólio profissional de **Gustavo Nunes da Silva**, desenvolvido com HTML, CSS e JavaScript.
 
----
+## ✨ Destaques
 
-## 🚀 Sobre Mim
-🎓 Estudante do **SESI Guarulhos** (2015 - 2026)  
-👨🏽‍💻 Estudante do **SENAI Hermenegildo Campos de Almeida** (2025 - 2026)  
-👨🏽‍💼 Jovem Aprendiz no **Consórcio Cantareira** (2025 - 2026)  
+- Interface dark premium
+- Identidade visual em preto, azul escuro e verde escuro
+- Layout responsivo para desktop, tablet e celular
+- Navegação com menu mobile
+- Animações de entrada com IntersectionObserver
+- Seções de apresentação, habilidades, projetos, trajetória, certificados e contato
+- SEO básico e HTML semântico
+- Compatível com GitHub Pages
+- Certificados e imagens reais do projeto original preservados
 
-💡 Apaixonado por tecnologia, sempre buscando evoluir em programação, sistemas e desenvolvimento.
+## 🛠️ Tecnologias
 
----
+- HTML5
+- CSS3
+- JavaScript
+- Google Fonts / Inter
 
-## 💻 Habilidades
+## 📁 Estrutura principal
 
-### 🎨 Front-end
-- HTML  
-- CSS  
-- JavaScript  
+```text
+/
+├── index.html
+├── certificados.html
+├── styles.css
+├── script.js
+├── images/
+├── certificados/
+├── páginaCursos/
+└── páginas/
+```
 
-### ⚙️ Back-end
-- Python  
-- Java  
-- Node.js  
+## ▶️ Como executar
 
-### 🌐 Infraestrutura e Dados
-- Arquitetura de Redes com IoT  
-- Banco de Dados  
+Basta abrir `index.html` em um navegador.
 
-### 🛠️ Sistemas e Ferramentas
-- Sistemas Operacionais  
-- Levantamento de Requisitos  
-- Git e GitHub  
+Para publicar no GitHub Pages, envie os arquivos para um repositório e configure o Pages para utilizar a branch/pasta desejada.
 
----
+## 🔗 Perfis
 
-## 🎮 Hobbies
-- 🎮 Jogar videogame  
-- 🎶 Tocar violão  
-- 🎞️ Assistir filmes  
-- 🖥️ Programar e editar  
-- 🎵 Ouvir música  
-- 📖 Ler livros  
+- GitHub: https://github.com/GustavoNunes7
+- LinkedIn: https://www.linkedin.com/in/gustavo-nunes-da-silva7/
+- Instagram: https://www.instagram.com/gununes.7/
 
----
+## 🎯 Objetivo
 
-## 📬 Contato
-- 📞 [Telefone]# 👋 Gustavo Nunes da Silva
-
-😎 17 anos  
-🎂 19/11/2008  
-📍 Guarulhos - SP  
-
----
-
-## 🚀 Sobre Mim
-🎓 Estudante do **SESI Guarulhos** (2015 - 2026)  
-👨🏽‍💻 Estudante do **SENAI Hermenegildo Campos de Almeida** (2025 - 2026)  
-👨🏽‍💼 Jovem Aprendiz no **Consórcio Cantareira** (2025 - 2026)  
-
-💡 Apaixonado por tecnologia, sempre buscando evoluir em programação, sistemas e desenvolvimento.
-
----
-
-## 💻 Habilidades
-
-### 🎨 Front-end
-- HTML  
-- CSS  
-- JavaScript  
-
-### ⚙️ Back-end
-- Python  
-- Java  
-- Node.js  
-
-### 🌐 Infraestrutura e Dados
-- Arquitetura de Redes com IoT  
-- Banco de Dados  
-
-### 🛠️ Sistemas e Ferramentas
-- Sistemas Operacionais  
-- Levantamento de Requisitos  
-- Git e GitHub  
-
----
-
-## 🎮 Hobbies
-- 🎮 Jogar videogame  
-- 🎶 Tocar violão  
-- 🎞️ Assistir filmes  
-- 🖥️ Programar e editar  
-- 🎵 Ouvir música  
-- 📖 Ler livros  
-
----
-
-## 📬 Contato
-- 📞 [Falar no WhatsApp](tel:+5511965036665)  
-- 📩 [Email Pessoal](mailto:nunesgugu77@gmail.com)  
-- 💼 [Email Profissional](mailto:gununes.tech7@gmail.com)  
-
----
-
-## 🙌 Versículo
-> "Não fiquem com medo, pois estou com vocês; não se apavorem, pois eu sou o seu Deus. Eu lhes dou forças e os ajudo; eu os protejo com a minha forte mão."  
-> 📖 Isaías 41:10  
-
----
-
-## ⚡ Sobre mim em uma frase
-💡 "Evoluindo todos os dias na tecnologia e na vida.")  
+Apresentar a trajetória, conhecimentos, projetos e aprendizado contínuo de Gustavo na área de Desenvolvimento de Sistemas.

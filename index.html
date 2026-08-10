@@ -1,248 +1,344 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Gustavo, Desenvolvedor de Sistemas. Especialista em criar soluções digitais modernas, responsivas e escaláveis.">
+    <meta name="author" content="Gustavo">
+    <meta name="theme-color" content="#050505">
+    <meta property="og:title" content="Gustavo | Desenvolvedor de Sistemas">
+    <meta property="og:description" content="Portfólio profissional e projetos de desenvolvimento de sistemas.">
+    
     <title>Gustavo | Desenvolvedor de Sistemas</title>
-    <meta name="description" content="Portfólio profissional de Gustavo, Desenvolvedor de Sistemas focado em construir soluções digitais eficientes e modernas.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header class="navbar">
+    <div class="premium-bg" aria-hidden="true"></div>
+    <div class="tech-grid" aria-hidden="true"></div>
+
+    <header class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">Gustavo<span>.dev</span></a>
+            <a href="#" class="logo" aria-label="Voltar ao topo">GN<span>.</span></a>
             
-            <nav class="nav-menu">
+            <nav class="nav-menu" aria-label="Navegação Principal">
                 <ul class="nav-list">
-                    <li><a href="#sobre" class="nav-link">Sobre Mim</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
                     <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
                     <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                    <li><a href="#trajetoria" class="nav-link">Trajetória</a></li>
                     <li><a href="#certificados" class="nav-link">Certificados</a></li>
-                    <li><a href="#contato" class="nav-link btn-contato-nav">Contato</a></li>
+                    <li><a href="#contato" class="nav-link btn-nav">Contato</a></li>
                 </ul>
             </nav>
 
-            <button class="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false">
-                <span class="hamburger"></span>
+            <button class="hamburger-btn" aria-label="Abrir menu mobile" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </button>
         </div>
     </header>
 
     <main>
-        <section class="hero" id="home">
-            <div class="container hero-container">
-                <div class="hero-content reveal">
-                    <p class="hero-greeting">Olá, eu sou <strong>Gustavo</strong></p>
-                    <h1 class="hero-title">Desenvolvedor de <span>Sistemas</span></h1>
+        <section class="hero" id="home" aria-label="Apresentação inicial">
+            <div class="container hero-wrapper">
+                <div class="hero-content reveal-fade-up">
+                    <p class="hero-tag">Desenvolvedor de Sistemas</p>
+                    <h1 class="hero-title">Olá, eu sou <br><span>Gustavo Nunes</span><span class="cursor-blink">_</span></h1>
                     <p class="hero-subtitle">
-                        Transformando ideias em soluções digitais através de código, tecnologia e criatividade. 
-                        Focado em performance, boas práticas e arquitetura limpa.
+                        Transformando ideias complexas em soluções digitais elegantes e de alto desempenho através de código, tecnologia e design inteligente.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+                    <div class="hero-actions">
+                        <a href="#projetos" class="btn btn-primary">Explorar Projetos</a>
                         <a href="#contato" class="btn btn-secondary">Entre em Contato</a>
                     </div>
                 </div>
-                <div class="hero-image reveal">
-                    <img src="assets/images/seu-avatar.jpg" alt="Foto de Gustavo" onerror="this.src='https://via.placeholder.com/350x350/0A1F44/F5F7FA?text=Sua+Foto+Aqui'">
+
+                <div class="hero-visual reveal-fade-left">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <pre class="code-body"><code><span class="keyword">const</span> developer <span class="operator">=</span> {
+  name: <span class="string">'Gustavo'</span>,
+  role: <span class="string">'System Developer'</span>,
+  passion: [<span class="string">'Coding'</span>, <span class="string">'Innovation'</span>],
+  buildSolution: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="string">'Success!'</span>;
+  }
+};</code></pre>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="sobre section" id="sobre">
+        <section class="sobre section" id="sobre" aria-label="Sobre mim">
             <div class="container">
-                <h2 class="section-title reveal">Sobre Mim</h2>
+                <h2 class="section-title reveal-fade-up">Sobre Mim</h2>
                 <div class="sobre-grid">
-                    <div class="sobre-text reveal">
-                        <p>Sou apaixonado por tecnologia e programação. Construo soluções modernas que agregam valor e facilitam a vida dos usuários.</p>
-                        <p>Tenho experiência contínua em aprendizado, desenvolvendo projetos e aprofundando meus conhecimentos na área de desenvolvimento de sistemas. Meu objetivo é sempre criar código limpo, escalável e manter a melhor experiência para o usuário (UX).</p>
+                    
+                    <div class="sobre-image-wrapper reveal-fade-right">
+                        <div class="image-glow"></div>
+                        <img src="images/foto.jpg" alt="Foto de perfil de Gustavo" class="sobre-foto" onerror="this.src='https://via.placeholder.com/400x500/0A1F44/F5F7FA?text=Sua+Foto+Aqui'">
                     </div>
-                    <div class="sobre-cards reveal">
-                        <div class="card-info">
-                            <span class="card-icon">📚</span>
-                            <h3>Evolução Contínua</h3>
-                            <p>Sempre estudando e aplicando novas tecnologias.</p>
-                        </div>
-                        <div class="card-info">
-                            <span class="card-icon">💡</span>
-                            <h3>Foco em Solução</h3>
-                            <p>Mais do que escrever código, busco resolver problemas.</p>
+
+                    <div class="sobre-text reveal-fade-left">
+                        <p>Sou um desenvolvedor apaixonado por criar arquiteturas eficientes e interfaces intuitivas. Minha jornada na tecnologia é movida pela curiosidade e pelo desejo de resolver problemas reais através de software de qualidade.</p>
+                        <p>Com foco contínuo em boas práticas e código limpo, busco sempre evoluir minhas habilidades técnicas e compreender profundamente as necessidades dos usuários.</p>
+                        
+                        <div class="sobre-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-icon">📍</span>
+                                <span>Brasil</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🎯</span>
+                                <span>Foco em Resultados</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="habilidades section" id="habilidades">
+        <section class="habilidades section" id="habilidades" aria-label="Habilidades Técnicas">
             <div class="container">
-                <h2 class="section-title reveal">Habilidades & Tecnologias</h2>
-                <div class="skills-grid reveal">
+                <h2 class="section-title reveal-fade-up">Tecnologias</h2>
+                <div class="skills-grid">
                     
-                    <div class="skill-category">
-                        <h3>Front-End</h3>
-                        <div class="tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">JavaScript</span>
+                    <div class="skill-card reveal-zoom">
+                        <div class="skill-header">
+                            <div class="skill-icon">🎨</div>
+                            <h3>Front-end</h3>
                         </div>
+                        <ul class="skill-list">
+                            <li>HTML5</li>
+                            <li>CSS3 (Flexbox/Grid)</li>
+                            <li>JavaScript (ES6+)</li>
+                        </ul>
                     </div>
 
-                    <div class="skill-category">
-                        <h3>Back-End</h3>
-                        <div class="tags">
-                            <span class="tag">Python (Exemplo)</span>
-                            <span class="tag">Node.js (Exemplo)</span>
+                    <div class="skill-card reveal-zoom">
+                        <div class="skill-header">
+                            <div class="skill-icon">⚙️</div>
+                            <h3>Back-end</h3>
                         </div>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>Node.js</li>
+                        </ul>
                     </div>
 
-                    <div class="skill-category">
-                        <h3>Banco de Dados</h3>
-                        <div class="tags">
-                            <span class="tag">SQLite (Exemplo)</span>
-                            <span class="tag">MySQL (Exemplo)</span>
+                    <div class="skill-card reveal-zoom">
+                        <div class="skill-header">
+                            <div class="skill-icon">🗄️</div>
+                            <h3>Banco de Dados</h3>
                         </div>
+                        <ul class="skill-list">
+                            <li>SQLite</li>
+                            <li>SQL / Relacionais</li>
+                        </ul>
                     </div>
 
-                    <div class="skill-category">
-                        <h3>Ferramentas</h3>
-                        <div class="tags">
-                            <span class="tag">Git</span>
-                            <span class="tag">GitHub</span>
-                            <span class="tag">VS Code</span>
+                    <div class="skill-card reveal-zoom">
+                        <div class="skill-header">
+                            <div class="skill-icon">🛠️</div>
+                            <h3>Ferramentas</h3>
                         </div>
+                        <ul class="skill-list">
+                            <li>Git & GitHub</li>
+                            <li>VS Code</li>
+                            <li>IoT</li>
+                        </ul>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <section class="projetos section" id="projetos">
+        <section class="projetos section" id="projetos" aria-label="Projetos desenvolvidos">
             <div class="container">
-                <h2 class="section-title reveal">Meus Projetos</h2>
-                <div class="projetos-grid">
-                    
-                    <article class="projeto-card reveal">
-                        <div class="projeto-img">
-                            <img src="assets/images/projeto1.jpg" alt="Screenshot do Projeto 1" onerror="this.src='https://via.placeholder.com/600x300/0A1F44/F5F7FA?text=Imagem+do+Projeto'">
+                <h2 class="section-title reveal-fade-up">Projetos em Destaque</h2>
+                
+                <div class="projetos-wrapper">
+                    <article class="projeto-card featured reveal-fade-up">
+                        <div class="projeto-imagem">
+                            <img src="images/projeto-destaque.jpg" alt="Preview do Projeto Principal" onerror="this.src='https://via.placeholder.com/800x450/0A1F44/F5F7FA?text=Projeto+Principal'">
                         </div>
-                        <div class="projeto-content">
-                            <h3>Nome do Projeto Existente</h3>
-                            <p>Breve descrição do objetivo do projeto e o problema que ele resolve, baseado nos arquivos reais.</p>
-                            <div class="projeto-techs">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JS</span>
+                        <div class="projeto-info">
+                            <h3>Sistema de Gestão (Exemplo)</h3>
+                            <p>Uma aplicação completa focada em resolver o problema de gerenciamento. Desenvolvida do zero, garantindo alta performance e uma interface moderna e responsiva.</p>
+                            <div class="tech-tags">
+                                <span>JavaScript</span>
+                                <span>Python</span>
+                                <span>SQLite</span>
                             </div>
                             <div class="projeto-links">
-                                <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver Projeto</a>
-                                <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                                <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Ver Online <span aria-hidden="true">↗</span></a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="projeto-card reveal">
-                        <div class="projeto-img">
-                            <img src="assets/images/projeto2.jpg" alt="Screenshot do Projeto 2" onerror="this.src='https://via.placeholder.com/600x300/0B3D2E/F5F7FA?text=Imagem+do+Projeto'">
-                        </div>
-                        <div class="projeto-content">
-                            <h3>Outro Projeto Incrível</h3>
-                            <p>Aqui você insere as informações reais do seu segundo projeto encontrado na sua pasta.</p>
-                            <div class="projeto-techs">
-                                <span>Tecnologia 1</span>
-                                <span>Tecnologia 2</span>
+                    <div class="projetos-grid">
+                        <article class="projeto-card normal reveal-fade-up">
+                            <div class="projeto-info">
+                                <h3>Projeto Secundário</h3>
+                                <p>Descrição concisa do objetivo deste projeto e qual foi o desafio técnico superado.</p>
+                                <div class="tech-tags">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                </div>
+                                <div class="projeto-links">
+                                    <a href="#" class="link-texto" target="_blank" rel="noopener noreferrer">Repositório &rarr;</a>
+                                </div>
                             </div>
-                            <div class="projeto-links">
-                                <a href="#" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver Projeto</a>
+                        </article>
+
+                        <article class="projeto-card normal reveal-fade-up">
+                            <div class="projeto-info">
+                                <h3>Projeto IoT</h3>
+                                <p>Integração de hardware e software para monitoramento de sensores em tempo real.</p>
+                                <div class="tech-tags">
+                                    <span>C++</span>
+                                    <span>IoT</span>
+                                </div>
+                                <div class="projeto-links">
+                                    <a href="#" class="link-texto" target="_blank" rel="noopener noreferrer">Repositório &rarr;</a>
+                                </div>
                             </div>
-                        </div>
-                    </article>
-
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="trajetoria section" id="trajetoria">
+        <section class="trajetoria section" id="trajetoria" aria-label="Linha do tempo e experiência">
             <div class="container">
-                <h2 class="section-title reveal">Trajetória e Conquistas</h2>
-                <div class="timeline reveal">
-                    
+                <h2 class="section-title reveal-fade-up">Trajetória</h2>
+                
+                <div class="timeline reveal-fade-up">
                     <div class="timeline-item">
-                        <div class="timeline-dot"></div>
+                        <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <span class="timeline-date">2024 - 2026 (Exemplo)</span>
-                            <h3>Formação em Desenvolvimento (Exemplo SENAI/SESI)</h3>
-                            <p>Aprendizado focado em lógica de programação, desenvolvimento web e criação de sistemas funcionais.</p>
+                            <span class="timeline-date">2015 - 2026</span>
+                            <h3>Estudante do SESI Guarulhos</h3>
+                            <p>Criando soluções e aprimorando conhecimentos em arquiteturas modernas e código limpo.</p>
                         </div>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-dot"></div>
+                        <div class="timeline-marker"></div>
                         <div class="timeline-content">
-                            <span class="timeline-date">Ano da Conquista</span>
-                            <h3>Projeto / Competição Existente</h3>
-                            <p>Breve descrição da sua participação, desafios superados e resultados alcançados.</p>
+                            <span class="timeline-date">2025 - 2026</span>
+                            <h3>Estudante de Desenvolmimento de Sistemas</h3>
+                            <p>Imersão técnica em desenvolvimento de sistemas, lógica de programação e banco de dados.</p>
                         </div>
                     </div>
 
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2025 - 2026</span>
+                            <h3>Jovem Aprendiz do Consórcio Cantareira </h3>
+                            <p>Aprendiz em construção......💻</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="certificados section" id="certificados">
+        <section class="certificados section" id="certificados" aria-label="Certificados e Cursos">
             <div class="container">
-                <h2 class="section-title reveal">Cursos e Certificados</h2>
-                <div class="certificados-grid">
-                    
-                    <div class="certificado-card reveal">
-                        <span class="cert-category">Tecnologia</span>
-                        <h3>Nome do Curso Real</h3>
-                        <p class="cert-institution">Instituição Real (ex: SENAI)</p>
-                        <a href="certificados/seu-arquivo.pdf" target="_blank" class="cert-link">Visualizar Certificado &rarr;</a>
+                <h2 class="section-title reveal-fade-up">Certificados</h2>
+                
+                <div class="certificate-institution reveal-fade-up">
+                    <div class="institution-header">
+                        <span class="institution-label">Educação Profissional</span>
+                        <h3>SENAI</h3>
                     </div>
-
-                    <div class="certificado-card reveal">
-                        <span class="cert-category">Desenvolvimento</span>
-                        <h3>Outro Curso Real</h3>
-                        <p class="cert-institution">Instituição</p>
-                        <a href="certificados/seu-arquivo-2.pdf" target="_blank" class="cert-link">Visualizar Certificado &rarr;</a>
-                    </div>
-
+                    <div class="certificate-grid">
+                        <article class="certificate-card">
+                            <div class="cert-icon">🎓</div>
+                            <div class="cert-info">
+                                <h4>Desenvolvimento de Sistemas</h4>
+                                <a href="certificados/senai-dev.pdf" class="link-texto" target="_blank">Visualizar &rarr;</a>
+                            </div>
+                        </article>
+                        <article class="certificate-card">
+                            <div class="cert-icon">🎓</div>
+                            <div class="cert-info">
+                                <h4>Banco de Dados SQL</h4>
+                                <a href="certificados/senai-sql.pdf" class="link-texto" target="_blank">Visualizar &rarr;</a>
+                            </div>
+                        </article>
+                        </div>
                 </div>
+
+                <div class="certificate-institution reveal-fade-up">
+                    <div class="institution-header">
+                        <span class="institution-label">Empreendedorismo</span>
+                        <h3>SEBRAE</h3>
+                    </div>
+                    <div class="certificate-grid">
+                        <article class="certificate-card">
+                            <div class="cert-icon">💼</div>
+                            <div class="cert-info">
+                                <h4>Empreendedorismo Inovador</h4>
+                                <a href="certificados/sebrae-1.pdf" class="link-texto" target="_blank">Visualizar &rarr;</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="certificate-institution reveal-fade-up">
+                    <div class="institution-header">
+                        <span class="institution-label">Formação Base</span>
+                        <h3>SESI</h3>
+                    </div>
+                    <div class="certificate-grid">
+                        <article class="certificate-card">
+                            <div class="cert-icon">📚</div>
+                            <div class="cert-info">
+                                <h4>Participação em Tecnologia</h4>
+                                <a href="certificados/sesi-1.pdf" class="link-texto" target="_blank">Visualizar &rarr;</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section class="contato section" id="contato">
-            <div class="container reveal">
-                <div class="contato-box">
-                    <h2>Vamos transformar uma ideia em projeto?</h2>
-                    <p>Estou sempre aberto a novos desafios e oportunidades de aprendizado.</p>
+        <section class="contato section" id="contato" aria-label="Entre em contato">
+            <div class="container">
+                <div class="cta-box reveal-scale">
+                    <h2>Tem uma ideia? <br>Vamos construir.</h2>
+                    <p>Sempre aberto a discutir novos projetos, ideias criativas e oportunidades de parceria no mundo da tecnologia.</p>
                     
-                    <div class="contato-links">
-                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                            Meu LinkedIn
-                        </a>
-                        <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-                            Meu GitHub
-                        </a>
-                        <a href="mailto:seu-email-real@exemplo.com" class="btn btn-outline">
-                            Enviar E-mail
-                        </a>
+                    <div class="cta-buttons">
+                        <a href="mailto:seuemail@exemplo.com" class="btn btn-primary">Enviar E-mail</a>
+                        <a href="https://github.com/seugithub" class="btn btn-outline" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://linkedin.com/in/seulinkedin" class="btn btn-outline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://linkedin.com/in/seulinkedin" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Instagram</a>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Gustavo. Desenvolvido com HTML, CSS e JavaScript puro.</p>
+            <p>&copy; 2026 Gustavo. Projetado e desenvolvido com tecnologia e precisão.</p>
         </div>
     </footer>
 
