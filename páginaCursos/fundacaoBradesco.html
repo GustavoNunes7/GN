@@ -1,62 +1,101 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gustavo Nunes</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel="stylesheet" href="../styles.css">
+  <title>Certificados Fundação Bradesco | Gustavo Nunes</title>
+  
   <link rel="icon" type="image/jpg" href="../images/Logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../styles.css">
 </head>
 
-  <body>
-    <header>
-        <img src="../images/foto.jpg" alt="Gustavo Nunes" class="foto"/>
-        <h1>Gustavo Nunes</h1>
-        <p>@Gununes.7</p>
-        <p>Estudante de Desenvolvimento de Sistemas 🖥️</p>
-        <hr/>
-    </header>
+<body>
 
-    <main>
-    <section class="cardSobreMim">
-        <img src="../images/cursos/fundacaoBradesco.jpg" alt="">
-    </section>
+  <div class="premium-bg" aria-hidden="true"></div>
+  <div class="tech-grid" aria-hidden="true"></div>
 
-    <section class="card"><hr>
-        <p>Educação Financeira</p>
-        <a href="../certificados/Fundação Bradesco/Certificado_Educação_Financeira.pdf "download="Certificado_Educação_Financeira.pdf">Certificado</a><hr>
-        
-    </section>
-      
+  <header class="navbar" id="navbar">
+      <div class="container nav-container">
+          <a href="../index.html" class="logo" aria-label="Voltar ao topo">
+              <img src="../images/Logo.jpg" alt="Logo Gustavo Nunes" style="width: 50px; border-radius: 8px;">
+          </a>
+          
+          <nav class="nav-menu" aria-label="Navegação Principal">
+              <ul class="nav-list">
+                  <li><a href="../index.html#sobre" class="nav-link">Sobre</a></li>
+                  <li><a href="../index.html#habilidades" class="nav-link">Habilidades</a></li>
+                  <li><a href="../index.html#projetos" class="nav-link">Projetos</a></li>
+                  <li><a href="../index.html#trajetoria" class="nav-link">Trajetória</a></li>
+                  <li><a href="../páginas/cursos.html" class="nav-link">Certificados</a></li>
+                  <li><a href="../index.html#contato" class="nav-link btn-nav">Contato</a></li>
+              </ul>
+          </nav>
 
+          <button class="hamburger-btn" aria-label="Abrir menu mobile" aria-expanded="false">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+          </button>
+      </div>
+  </header>
 
+  <main>
+      <section class="page-header" style="padding: 150px 0 40px 0; text-align: center;">
+          <div class="container">
+              <img src="../images/cursos/fundacaoBradesco.jpg" alt="Logo Fundação Bradesco" class="reveal-zoom" style="max-width: 150px; border-radius: var(--radius-md); margin: 0 auto 20px auto; box-shadow: var(--card-shadow); border: 1px solid var(--glass-border);">
+              <h1 class="section-title reveal-fade-up">Fundação <span>Bradesco</span></h1>
+              <p class="hero-subtitle reveal-fade-up" style="max-width: 600px; margin: 0 auto;">
+                  Cursos de qualificação e aperfeiçoamento profissional.
+              </p>
+          </div>
+      </section>
 
-   <main>
-    
-    <section class="cardVoltar">
-        <h2>Cursos e Certificados 📚</h2>
-        <a href="../páginas/cursos.html">Voltar</a>
-        <h2>Voltar para página inicial</h2>
-        <a href="../index.html">Voltar</a>
-    </section>
-   </main>
+      <section class="certificados section" style="padding-top: 20px;">
+          <div class="container">
+              <div class="certificate-grid reveal-fade-up">
+                  
+                  <article class="certificate-card">
+                      <div class="cert-icon">💰</div>
+                      <div class="cert-info">
+                          <h4>Educação Financeira</h4>
+                          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">Fundação Bradesco</p>
+                          <a href="../certificados/Fundação Bradesco/Certificado_Educação_Financeira.pdf" download="Certificado_Educação_Financeira.pdf" class="link-texto">
+                              Baixar Certificado ↓
+                          </a>
+                      </div>
+                  </article>
 
-   <footer><br>
-      <ul>
-        <li>
-          <a href="https://www.instagram.com/gununes.7/" target="_blank"><i class="fab fa-instagram icon"><img src="" alt=""></i> </a>
-        </li>
+              </div>
+          </div>
+      </section>
 
-        <li>
-          <a href="https://www.linkedin.com/in/gustavo-nunes-da-silva7/" target="_blank"><i class="fab fa-linkedin-in icon"></i></a>
-        </li>
+      <section class="contato section" style="padding-top: 40px;">
+          <div class="container">
+              <div class="cta-box reveal-scale" style="padding: 40px; background: var(--black-surface); text-align: center;">
+                  <h2 style="font-size: 1.8rem; margin-bottom: 15px;">Deseja navegar para onde?</h2>
+                  <div class="cta-buttons" style="justify-content: center; gap: 15px;">
+                      <a href="../index.html" class="btn btn-primary">Ir para Página Inicial 🏠</a>
+                  </div>
+              </div>
+          </div>
+      </section>
+  </main>
 
-        <li>
-          <a href="https://github.com/GustavoNunes7" target="_blank"><i class="fab fa-github icon"></i></a></li>
-        </ul>
+  <footer class="footer">
+      <div class="container" style="text-align: center;">
+          <div class="cta-buttons" style="justify-content: center; margin-bottom: 20px;">
+              <a href="https://www.instagram.com/gununes.7/" target="_blank" class="link-texto">Instagram ↗</a>
+              <a href="https://www.linkedin.com/in/gustavo-nunes-da-silva7/" target="_blank" class="link-texto">LinkedIn ↗</a>
+              <a href="https://github.com/GustavoNunes7" target="_blank" class="link-texto">GitHub ↗</a>
+          </div>
+          <p>&copy; 2026 Gustavo Nunes. @Gununes.7</p>
+      </div>
+  </footer>
 
-
-    </footer>
-  </body>
+  <script src="../script.js"></script>
+</body>
 </html>
