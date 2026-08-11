@@ -746,3 +746,81 @@ img { max-width: 100%; height: auto; display: block; }
     .timeline-marker { left: 10px; }
     .timeline-item { padding-left: 30px; }
 }
+
+/* ==========================================================================
+   REGRAS E ESTILOS DAS ANIMAÇÕES (REVEAL & INTERAÇÕES)
+   ========================================================================== */
+
+/* Barra de Progresso no Topo */
+.scroll-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.7);
+    transition: width 0.1s ease-out;
+    z-index: 1001;
+}
+
+/* Base de Transição para Elementos de Entrada */
+.reveal-fade-up,
+.reveal-fade-left,
+.reveal-fade-right,
+.reveal-zoom,
+.reveal-scale,
+.certificate-card {
+    opacity: 0;
+    will-change: transform, opacity, filter;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tipos de Entradas Diferentes */
+.reveal-fade-up {
+    transform: translateY(40px);
+    filter: blur(4px);
+}
+
+.reveal-fade-left {
+    transform: translateX(-40px);
+    filter: blur(4px);
+}
+
+.reveal-fade-right {
+    transform: translateX(40px);
+    filter: blur(4px);
+}
+
+.reveal-zoom {
+    transform: scale(0.85);
+    filter: blur(6px);
+}
+
+.reveal-scale {
+    transform: scale(0.92) translateY(20px);
+}
+
+/* Estado Visível (Revealed) */
+.reveal-fade-up.is-revealed,
+.reveal-fade-left.is-revealed,
+.reveal-fade-right.is-revealed,
+.reveal-zoom.is-revealed,
+.reveal-scale.is-revealed,
+.certificate-card.is-revealed {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+    filter: blur(0px);
+}
+
+/* Suporte a transição suave no Tilt 3D */
+.certificate-card,
+.project-card,
+.cta-box {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.25s ease, 
+                border-color 0.25s ease;
+    transform-style: preserve-3d;
+}
