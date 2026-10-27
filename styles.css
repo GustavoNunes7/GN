@@ -344,12 +344,21 @@ img { max-width: 100%; height: auto; display: block; }
     -webkit-text-fill-color: transparent;
 }
 
+/* ==========================================================================
+   ANIMAÇÃO DO CURSOR (HERO)
+   ========================================================================== */
 .cursor-blink {
     color: var(--green-light);
     animation: blink 1s step-end infinite;
+    margin-left: 4px; /* Afasta ligeiramente o cursor do nome */
+    display: inline-block;
 }
 
-@keyframes blink { 50% { opacity: 0; } }
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 
 .hero-subtitle {
     font-size: 1.1rem;
