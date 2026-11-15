@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gustavo Nunes | Desenvolvedor de Sistemas</title>
+  <meta name="description"
+    content="Portfólio de Gustavo Nunes, Desenvolvedor de Sistemas em formação. Projetos, habilidades, trajetória e certificados — em uma experiência em pixel art e 3D." />
+  <meta name="author" content="Gustavo Nunes" />
+  <meta name="theme-color" content="#05070B" />
+  <meta property="og:title" content="Gustavo Nunes | Desenvolvedor de Sistemas" />
+  <meta property="og:description" content="Portfólio profissional e projetos de desenvolvimento de sistemas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/foto.jpg" />
+  <link rel="icon" href="./images/Logo.jpg" />
+  <link rel="preload" href="fonts/pixelify-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body data-page="home">
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <!-- Tela de boot -->
+  <div class="boot" id="boot" role="status" aria-live="polite">
+    <div class="boot-box">
+      <div class="boot-logo">GN<b>.</b>OS</div>
+      <div class="boot-log" id="bootLog">&gt; iniciando…</div>
+      <div class="boot-bar"><i id="bootBar"></i></div>
+      <button class="boot-skip" id="bootSkip" type="button">[ PULAR ]</button>
+    </div>
+  </div>
+
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="px-cursor" id="pxCursor" aria-hidden="true"></div>
+
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo" aria-label="Gustavo Nunes — voltar ao topo">
+        <img src="./images/Logo.jpg" alt="" width="44" height="44" />
+        <span class="logo-text">GN<b>.</b>OS</span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a href="#sobre" class="nav-link"><span class="nav-idx">01</span>Sobre</a></li>
+          <li><a href="#habilidades" class="nav-link"><span class="nav-idx">02</span>Habilidades</a></li>
+          <li><a href="#projetos" class="nav-link"><span class="nav-idx">03</span>Projetos</a></li>
+          <li><a href="#trajetoria" class="nav-link"><span class="nav-idx">04</span>Trajetória</a></li>
+          <li><a href="#certificados" class="nav-link"><span class="nav-idx">05</span>Certificados</a></li>
+          <li><a href="#contato" class="nav-link btn-nav">Contato</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      </button>
+    </div>
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress-bar" id="progressBar"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home" aria-label="Apresentação inicial">
+      <div class="container hero-wrapper">
+        <div class="hero-content">
+          <p class="hero-tag" data-reveal><i></i>PLAYER 01 · ONLINE</p>
+          <h1 class="hero-title" id="heroTitle" aria-label="Gustavo Nunes" data-reveal style="--d: 1">
+            <span class="glitch" data-text="Gustavo" aria-hidden="true">Gustavo</span><br />
+            <span class="glitch alt" data-text="Nunes" aria-hidden="true">Nunes</span><span class="cursor-blink"
+              aria-hidden="true">_</span>
+          </h1>
+          <p class="hero-role" data-reveal style="--d: 2">Desenvolvedor de Sistemas em formação</p>
+          <p class="hero-type" data-reveal style="--d: 3" aria-hidden="true"><b>&gt;</b> <span
+              id="typeText">transformando ideias em código</span><span class="caret"></span></p>
+          <p class="hero-subtitle" data-reveal style="--d: 3">
+            Construo soluções digitais com código, tecnologia e design — movido pela curiosidade e pelo desejo de
+            resolver problemas reais.
+          </p>
+          <div class="hero-actions" data-reveal style="--d: 4">
+            <a href="#projetos" class="btn btn-green"><span class="pxi" data-px="rocket"></span>Explorar Projetos</a>
+            <a href="#trajetoria" class="btn btn-ghost"><span class="pxi" data-px="scroll"></span>Conhecer
+              Trajetória</a>
+          </div>
+          <div class="hud-card px" data-reveal style="--d: 5">
+            <div class="hud-row"><span class="hud-k">PLAYER:</span><span class="hud-v">GUSTAVO NUNES</span></div>
+            <div class="hud-row"><span class="hud-k">CLASS:</span><span class="hud-v">SYSTEM DEVELOPER</span></div>
+            <div class="hud-row"><span class="hud-k">CURRENT MISSION:</span><span class="hud-v">EVOLUÇÃO CONSTANTE NA
+                TECNOLOGIA</span></div>
+          </div>
+        </div>
+
+        <div class="hero-stage" id="heroStage" data-reveal="zoom" style="--d: 2">
+          <canvas class="stage-poster" id="heroPoster" role="img"
+            aria-label="Ilustração em pixel art: um desenvolvedor ao lado de um computador sobre uma ilha flutuante"></canvas>
+          <canvas class="stage-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+          <span class="stage-corner tl"></span><span class="stage-corner tr"></span><span
+            class="stage-corner bl"></span><span class="stage-corner br"></span>
+          <span class="stage-tag t" aria-hidden="true">GN_DEV_ROOM</span>
+          <span class="stage-tag b" aria-hidden="true">MOVA O MOUSE ▸</span>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#sobre" aria-label="Rolar para a próxima seção">ROLAR<span class="pxi"
+          data-px="arrowup"></span></a>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>HTML</span><span>CSS</span><span>JAVASCRIPT</span><span>PYTHON</span><span>JAVA</span><span>NODE.JS</span><span>SQLITE</span><span>MYSQL</span><span>REDES</span><span>IOT</span><span>GIT</span><span>GITHUB</span><span>VS
+          CODE</span><span>FIGMA</span>
+        <span>HTML</span><span>CSS</span><span>JAVASCRIPT</span><span>PYTHON</span><span>JAVA</span><span>NODE.JS</span><span>SQLITE</span><span>MYSQL</span><span>REDES</span><span>IOT</span><span>GIT</span><span>GITHUB</span><span>VS
+          CODE</span><span>FIGMA</span>
+      </div>
+    </div>
+
+    <!-- ============ SOBRE ============ -->
+    <section class="section" id="sobre" aria-labelledby="t-sobre">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-idx">// 01 · PLAYER_PROFILE.sav</span>
+          <h2 class="sec-title" id="t-sobre">Sobre <span>Mim</span></h2>
+        </header>
+
+        <div class="about-grid">
+          <figure class="player-card px" data-reveal="left" data-tilt>
+            <div class="player-photo">
+              <span class="player-badge">PLAYER 01</span>
+              <img src="images/foto.jpg" alt="Foto de perfil de Gustavo Nunes" width="1200" height="1600" loading="lazy"
+                decoding="async" />
+            </div>
+            <figcaption class="player-meta">
+              <strong>Gustavo Nunes</strong>
+              <span>&gt; System Developer · Guarulhos-SP</span>
+            </figcaption>
+            <span class="glare" aria-hidden="true"></span>
+          </figure>
+
+          <div class="about-body">
+            <div class="about-text" data-reveal="right">
+              <p>
+                Aos 17 anos, sou estudante de Desenvolvimento de Sistemas no SENAI e aluno do SESI Guarulhos desde 2015.
+                Sou um desenvolvedor apaixonado por criar arquiteturas eficientes e interfaces intuitivas. Minha jornada
+                na tecnologia é movida pela curiosidade e pelo desejo de resolver problemas reais através de software de
+                qualidade.
+              </p>
+              <p>
+                Com foco contínuo em boas práticas e código limpo, busco sempre evoluir minhas habilidades técnicas e
+                compreender profundamente as necessidades dos usuários. No tempo livre, gosto de videogames, música,
+                leitura e edição de vídeos. Guiado pela fé, enfrento novos desafios com coragem e resiliência para o meu
+                crescimento pessoal e profissional.
+              </p>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-card px" data-reveal style="--d: 1"><span class="pxi" data-px="cap"></span>
+                <div>
+                  <h3>SENAI</h3>
+                  <p>Desenvolvimento de Sistemas</p>
+                </div>
+              </div>
+              <div class="info-card px" data-reveal style="--d: 2"><span class="pxi" data-px="book"></span>
+                <div>
+                  <h3>SESI Guarulhos</h3>
+                  <p>Aluno desde 2015</p>
+                </div>
+              </div>
+              <div class="info-card px" data-reveal style="--d: 3"><span class="pxi" data-px="pin"></span>
+                <div>
+                  <h3>Guarulhos - SP</h3>
+                  <p>Base de operações</p>
+                </div>
+              </div>
+              <div class="info-card px" data-reveal style="--d: 4"><span class="pxi" data-px="gamepad"></span>
+                <div>
+                  <h3>Fora do código</h3>
+                  <p>Videogames, música, leitura e edição de vídeos</p>
+                </div>
+              </div>
+              <div class="info-card px" data-reveal style="--d: 5"><span class="pxi" data-px="target"></span>
+                <div>
+                  <h3>Foco em Resultados</h3>
+                  <p>Boas práticas e código limpo</p>
+                </div>
+              </div>
+              <div class="info-card px" data-reveal style="--d: 6"><span class="pxi" data-px="bulb"></span>
+                <div>
+                  <h3>Aprendizado</h3>
+                  <p>Busca constante por evoluir na tecnologia</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="quest-log px green" data-reveal>
+              <h3>QUEST LOG</h3>
+              <div class="quest-row"><b>QUESTS COMPLETED:</b><span><span class="num">3</span>projetos · <span
+                    class="num">29</span>certificações</span></div>
+              <div class="quest-row"><b>CURRENT MISSION:</b><span>evolução constante na tecnologia</span></div>
+            </div>
+
+            <blockquote class="verse" data-reveal>
+              “Não fiquem com medo, pois estou com vocês; não se apavorem, pois eu sou o seu Deus. Eu lhes dou forças e
+              os ajudo; eu os protejo com a minha forte mão.”
+              <cite>— Isaías 41.10</cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HABILIDADES ============ -->
+    <section class="section" id="habilidades" aria-labelledby="t-skills">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-idx">// 02 · SKILL_TREE.dat</span>
+          <h2 class="sec-title" id="t-skills">Skill <span>Tree</span></h2>
+          <p class="sec-sub">As tecnologias que estudo e uso nos meus projetos, organizadas por área.</p>
+        </header>
+
+        <div class="tree">
+          <div class="tree-root px green" data-reveal="zoom"><span class="pxi" data-px="user"></span>
+            <div><b>GN</b><small>SYSTEM DEVELOPER</small></div>
+          </div>
+
+          <div class="tree-branches">
+            <article class="branch" data-reveal style="--d: 1">
+              <header class="branch-head px"><span class="pxi" data-px="palette"></span>
+                <h3>Front-end</h3>
+                <p>interface &amp; experiência</p>
+              </header>
+              <ul class="skills">
+                <li class="skill px"><span class="pxi" data-px="code"></span>HTML</li>
+                <li class="skill px"><span class="pxi" data-px="palette"></span>CSS</li>
+                <li class="skill px"><span class="pxi" data-px="bolt"></span>JavaScript</li>
+              </ul>
+            </article>
+
+            <article class="branch" data-reveal style="--d: 2">
+              <header class="branch-head px green"><span class="pxi" data-px="gear"></span>
+                <h3>Back-end</h3>
+                <p>lógica &amp; servidores</p>
+              </header>
+              <ul class="skills">
+                <li class="skill px green"><span class="pxi" data-px="scroll"></span>Python</li>
+                <li class="skill px green"><span class="pxi" data-px="gear"></span>Java</li>
+                <li class="skill px green"><span class="pxi" data-px="leaf"></span>Node.js</li>
+              </ul>
+            </article>
+
+            <article class="branch" data-reveal style="--d: 3">
+              <header class="branch-head px"><span class="pxi" data-px="db"></span>
+                <h3>Banco de Dados e Infraestrutura</h3>
+                <p>dados &amp; conectividade</p>
+              </header>
+              <ul class="skills">
+                <li class="skill px"><span class="pxi" data-px="db"></span>SQLite</li>
+                <li class="skill px"><span class="pxi" data-px="chart"></span>MySQL</li>
+                <li class="skill px"><span class="pxi" data-px="globe"></span>Arquitetura de Redes</li>
+                <li class="skill px"><span class="pxi" data-px="chip"></span>IoT</li>
+              </ul>
+            </article>
+
+            <article class="branch" data-reveal style="--d: 4">
+              <header class="branch-head px green"><span class="pxi" data-px="wrench"></span>
+                <h3>Ferramentas</h3>
+                <p>fluxo de trabalho</p>
+              </header>
+              <ul class="skills">
+                <li class="skill px green"><span class="pxi" data-px="cycle"></span>Git</li>
+                <li class="skill px green"><span class="pxi" data-px="user"></span>GitHub</li>
+                <li class="skill px green"><span class="pxi" data-px="code"></span>VS Code</li>
+                <li class="skill px green"><span class="pxi" data-px="palette"></span>Figma</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJETOS ============ -->
+    <section class="section" id="projetos" aria-labelledby="t-proj">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-idx">// 03 · QUESTS.log</span>
+          <h2 class="sec-title" id="t-proj">Projetos em <span>Destaque</span></h2>
+        </header>
+
+        <div class="projetos-wrapper">
+          <article class="projeto-card featured px green" data-reveal data-tilt>
+            <div class="projeto-preview">
+              <span class="featured-flag">PROJETO PRINCIPAL</span>
+              <div class="preview-art"><span class="pxi" data-px="bigGear"></span></div>
+              <span class="preview-tag">ARTE ILUSTRATIVA</span>
+            </div>
+            <div class="projeto-info">
+              <span class="status-chip"><i></i>CÓDIGO NO GITHUB</span>
+              <h3>MetalTech</h3>
+              <p>Uma aplicação completa focada em resolver o problema de gerenciamento.</p>
+              <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              <div class="projeto-links">
+                <a href="https://github.com/GustavoNunes7/MetalTech-3.0" class="btn btn-ghost" target="_blank"
+                  rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+
+          <div class="projetos-grid">
+            <article class="projeto-card normal px" data-reveal data-tilt>
+              <div class="projeto-preview">
+                <div class="preview-art"><span class="pxi" data-px="ball"></span></div>
+                <span class="preview-tag">ARTE ILUSTRATIVA</span>
+              </div>
+              <div class="projeto-info">
+                <span class="status-chip live"><i></i>ONLINE</span>
+                <h3>Tabela do Brasileirão 2025</h3>
+                <p>Criação da Tabela do Campeonato Brasileiro de Futebol de 2025.</p>
+                <div class="tech-tags"><span>HTML</span><span>CSS</span></div>
+                <div class="projeto-links">
+                  <a href="https://github.com/GustavoNunes7/Tabela_do_Brasileirao_2025_no-HTML" class="btn btn-ghost"
+                    target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                  <a href="https://gustavonunes7.github.io/Tabela_do_Brasileirao_2025_no-HTML/" class="btn btn-green"
+                    target="_blank" rel="noopener noreferrer">Ver Online <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+              <span class="glare" aria-hidden="true"></span>
+            </article>
+
+            <article class="projeto-card normal px" data-reveal data-tilt style="--d: 1">
+              <div class="projeto-preview">
+                <div class="preview-art"><span class="pxi" data-px="capybara"></span></div>
+                <span class="preview-tag">ARTE ILUSTRATIVA</span>
+              </div>
+              <div class="projeto-info">
+                <span class="status-chip"><i></i>CÓDIGO NO GITHUB</span>
+                <h3>Jogo da Capivarinha</h3>
+                <p>Integração de Cliente e Servidor em um Jogo de uma Capivara.</p>
+                <div class="tech-tags"><span>Python</span></div>
+                <div class="projeto-links">
+                  <a href="https://github.com/GustavoNunes7/Jogo-da-Capivarinha" class="btn btn-ghost" target="_blank"
+                    rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+              <span class="glare" aria-hidden="true"></span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRAJETÓRIA ============ -->
+    <section class="section" id="trajetoria" aria-labelledby="t-traj">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-idx">// 04 · TIMELINE.map</span>
+          <h2 class="sec-title" id="t-traj">Trajetória</h2>
+        </header>
+
+        <div class="timeline" id="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"><span class="pxi" data-px="book"></span></div>
+            <div class="timeline-content px" data-reveal="left">
+              <span class="timeline-date">2015 - 2026</span>
+              <h3>Estudante do SESI Guarulhos</h3>
+              <p>Criando soluções e aprimorando conhecimentos em arquiteturas modernas e código limpo.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"><span class="pxi" data-px="code"></span></div>
+            <div class="timeline-content px green" data-reveal="right">
+              <span class="timeline-date">2025 - 2026</span>
+              <h3>Estudante de Desenvolvimento de Sistemas</h3>
+              <p>Imersão técnica em desenvolvimento de sistemas, lógica de programação e banco de dados.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"><span class="pxi" data-px="brief"></span></div>
+            <div class="timeline-content px" data-reveal="left">
+              <span class="timeline-date">2025 - 2026</span>
+              <h3>Jovem Aprendiz do Consórcio Cantareira</h3>
+              <p>Aprendiz em construção...... 💻</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mission px green" data-reveal><b>CURRENT MISSION</b><span>evolução constante na tecnologia<span
+              class="caret" aria-hidden="true"></span></span></div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICADOS ============ -->
+    <section class="section" id="certificados" aria-labelledby="t-cert">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-idx">// 05 · ACHIEVEMENTS.db</span>
+          <h2 class="sec-title" id="t-cert">Certificados</h2>
+          <p class="sec-sub">Formação e cursos realizados. Cada card abre o documento original.</p>
+        </header>
+
+        <div class="filters" id="certFilters" role="group" aria-label="Filtrar certificados por instituição"
+          data-reveal>
+          <button class="chip" type="button" aria-pressed="true" data-filter="all" data-kicker="Todas as instituições"
+            data-title="Todos" data-desc="29 certificados em 5 categorias." data-href="">Todos
+            <small>29</small></button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="senai"
+            data-kicker="Educação Profissional" data-title="SENAI"
+            data-desc="Cursos SENAI — competências transversais e qualificações técnicas."
+            data-href="./Cursos/senai.html">SENAI <small>17</small></button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="sebrae" data-kicker="Empreendedorismo"
+            data-title="SEBRAE" data-desc="Trilha Vitrine Sebrae — atitude empreendedora e criatividade."
+            data-href="./Cursos/sebrae.html">SEBRAE <small>7</small></button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="sesi" data-kicker="Formação Base"
+            data-title="SESI" data-desc="Participação escolar — eventos e competições."
+            data-href="./Cursos/sesi.html">SESI <small>2</small></button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="bradesco"
+            data-kicker="Buscar novas oportunidades" data-title="Fundação Bradesco"
+            data-desc="Cursos Fundação Bradesco." data-href="./Cursos/fundacaoBradesco.html">Fundação Bradesco
+            <small>1</small></button>
+          <button class="chip" type="button" aria-pressed="false" data-filter="extras"
+            data-kicker="Conhecimentos para o Futuro" data-title="Outros Cursos"
+            data-desc="Cursos extras e complementares." data-href="./Cursos/outrosCursos.html">Extras
+            <small>2</small></button>
+        </div>
+        <div class="inst-bar" id="instBar" aria-live="polite"><span><b>Todos</b> — 29 certificados em 5
+            categorias.</span></div>
+
+        <div class="certificate-grid" id="certGrid">
+          <article class="cert cert-summary px" data-inst="senai" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SENAI</span><span class="pxi" data-px="cap"></span></div>
+            <div class="cert-info">
+              <h3>Cursos SENAI</h3>
+              <p>Educação Profissional · 17 qualificações</p>
+              <div class="cert-actions"><a href="./Cursos/senai.html" class="link-px">Visualizar &rarr;</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
+                src="./images/thumbs/sebrae-vai-la-e-faz.jpg" alt="Miniatura do certificado Vai Lá e Faz" width="560"
+                height="396" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Vai Lá e Faz</h3>
+              <p>Vitrine Sebrae</p>
+              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Vai%20L%C3%A1%20e%20Faz.pdf"
+                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Vitrine%20Sebrae/Vai%20L%C3%A1%20e%20Faz.pdf" class="link-px"
+                  download="Vai Lá e Faz.pdf">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
+                src="./images/thumbs/sebrae-cheio-de-atitude.jpg" alt="Miniatura do certificado Cheio de Atitude"
+                width="560" height="396" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Cheio de Atitude</h3>
+              <p>Vitrine Sebrae</p>
+              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Cheio%20de%20Atitude.pdf"
+                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Vitrine%20Sebrae/Cheio%20de%20Atitude.pdf" class="link-px"
+                  download="Cheio de Atitude.pdf">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img src="./images/thumbs/sebrae-fala-ai.jpg"
+                alt="Miniatura do certificado Fala aí" width="560" height="396" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Fala aí</h3>
+              <p>Vitrine Sebrae</p>
+              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Fala%20a%C3%AD.pdf" class="link-px"
+                  target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Vitrine%20Sebrae/Fala%20a%C3%AD.pdf" class="link-px"
+                  download="Fala aí.pdf">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
+                src="./images/thumbs/sebrae-meu-sucesso.jpg" alt="Miniatura do certificado Meu Sucesso" width="560"
+                height="396" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Meu Sucesso</h3>
+              <p>Vitrine Sebrae</p>
+              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Meu%20Sucesso.pdf" class="link-px"
+                  target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Vitrine%20Sebrae/Meu%20Sucesso.pdf" class="link-px"
+                  download="Meu Sucesso.pdf">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
+                src="./images/thumbs/sebrae-criativos.jpg"
+                alt="Miniatura do certificado Criativos: O que são? Onde vivem? Do que se alimentam?" width="560"
+                height="396" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Criativos: O que são? Onde vivem? Do que se alimentam?</h3>
+              <p>Vitrine Sebrae</p>
+              <div class="cert-actions"><a
+                  href="./certificados/Vitrine%20Sebrae/Criativos%20O%20que%20s%C3%A3o%20Onde%20vivem%20Do%20que%20se%20alimentam.pdf"
+                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Vitrine%20Sebrae/Criativos%20O%20que%20s%C3%A3o%20Onde%20vivem%20Do%20que%20se%20alimentam.pdf"
+                  class="link-px" download="Criativos O que são Onde vivem Do que se alimentam.pdf">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
+                src="./images/thumbs/sebrae-fui-la-e-fiz.jpg" alt="Miniatura do certificado Fui lá e fiz" width="560"
+                height="396" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Fui lá e fiz</h3>
+              <p>Vitrine Sebrae</p>
+              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Fui%20l%C3%A1%20e%20fiz.pdf"
+                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Vitrine%20Sebrae/Fui%20l%C3%A1%20e%20fiz.pdf" class="link-px"
+                  download="Fui lá e fiz.pdf">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
+                src="./images/thumbs/sebrae-metamorfose.jpg" alt="Miniatura do certificado Essa Metamorfose Ambulante"
+                width="560" height="396" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Essa Metamorfose Ambulante</h3>
+              <p>Vitrine Sebrae</p>
+              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Essa%20Metamorfose%20Ambulante.pdf"
+                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Vitrine%20Sebrae/Essa%20Metamorfose%20Ambulante.pdf" class="link-px"
+                  download="Essa Metamorfose Ambulante.pdf">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sesi" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SESI</span><img src="./images/thumbs/sesi-selibi-2025.jpg"
+                alt="Miniatura do certificado Participação Selibi 2025" width="560" height="401" loading="lazy"
+                decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Participação Selibi 2025</h3>
+              <p>Evento / Competição</p>
+              <div class="cert-actions"><a href="./certificados/Sesi/Selibi2025.jpg" class="link-px" target="_blank"
+                  rel="noopener noreferrer">Ver original ↗</a><a href="./certificados/Sesi/Selibi2025.jpg"
+                  class="link-px" download="Selibi2025.jpg">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="sesi" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">SESI</span><img src="./images/thumbs/sesi-canguru-2025.jpg"
+                alt="Miniatura do certificado Canguru de Matemática 2025" width="560" height="301" loading="lazy"
+                decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Canguru de Matemática 2025</h3>
+              <p>Olimpíada / Participação</p>
+              <div class="cert-actions"><a href="./certificados/Sesi/Canguru%202025.png" class="link-px" target="_blank"
+                  rel="noopener noreferrer">Ver original ↗</a><a href="./certificados/Sesi/Canguru%202025.png"
+                  class="link-px" download="Canguru 2025.png">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="bradesco" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">BRADESCO</span><img
+                src="./images/thumbs/bradesco-educacao-financeira.jpg"
+                alt="Miniatura do certificado Educação Financeira" width="560" height="433" loading="lazy"
+                decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Educação Financeira</h3>
+              <p>Fundação Bradesco</p>
+              <div class="cert-actions"><a
+                  href="./certificados/Funda%C3%A7%C3%A3o%20Bradesco/Certificado_Educa%C3%A7%C3%A3o_Financeira.pdf"
+                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Funda%C3%A7%C3%A3o%20Bradesco/Certificado_Educa%C3%A7%C3%A3o_Financeira.pdf"
+                  class="link-px" download="Certificado_Educação_Financeira.pdf">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="extras" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">EXTRAS</span><img src="./images/thumbs/extras-conecta.jpg"
+                alt="Miniatura do certificado Conecta — Comunicação &amp; Multimídia" width="560" height="394"
+                loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Conecta — Comunicação &amp; Multimídia</h3>
+              <p>Curso realizado na Igreja</p>
+              <div class="cert-actions"><a href="./certificados/Extras/ConectaMidia.jpg" class="link-px" target="_blank"
+                  rel="noopener noreferrer">Ver original ↗</a><a href="./certificados/Extras/ConectaMidia.jpg"
+                  class="link-px" download="Conecta-Comunicação&amp;Multimídia.jpg">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+          <article class="cert px" data-inst="extras" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">EXTRAS</span><img src="./images/thumbs/extras-gemini.jpg"
+                alt="Miniatura do certificado Gemini Academy para Universitários 2026" width="560" height="396"
+                loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Gemini Academy para Universitários 2026</h3>
+              <p>Funcionalidades do Google Gemini</p>
+              <div class="cert-actions"><a href="./certificados/Extras/GeminiAcademy.jpg" class="link-px"
+                  target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
+                  href="./certificados/Extras/GeminiAcademy.jpg" class="link-px"
+                  download="Gemini Academy para Universitários 2026.jpg">Baixar ↓</a></div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+        </div>
+
+        <nav class="inst-pages" aria-label="Páginas completas por instituição" data-reveal>
+          <span>PÁGINAS COMPLETAS:</span>
+          <a class="link-px" href="./Cursos/senai.html">SENAI</a>
+          <a class="link-px" href="./Cursos/sebrae.html">SEBRAE</a>
+          <a class="link-px" href="./Cursos/sesi.html">SESI</a>
+          <a class="link-px" href="./Cursos/fundacaoBradesco.html">Fundação Bradesco</a>
+          <a class="link-px" href="./Cursos/outrosCursos.html">Outros Cursos</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section class="section" id="contato" aria-labelledby="t-contato">
+      <div class="container">
+        <div class="cta-box px green" data-reveal="zoom">
+          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>gn@portfolio:~$ contato</span></div>
+          <div class="term-body">
+            <h2 id="t-contato">Tem uma ideia? <br /><span>Vamos construir.</span></h2>
+            <p>Sempre aberto a discutir novos projetos, ideias criativas e oportunidades de parceria no mundo da
+              tecnologia.</p>
+
+            <p class="term-cmd" id="termCmd" aria-hidden="true">$ gn --connect</p>
+
+            <div class="cta-buttons">
+              <div class="contact-row">
+                <a href="mailto:gununes.tech7@gmail.com"><span class="pxi" data-px="mail"></span><span
+                    class="k">E-MAIL</span><span class="v">gununes.tech7@gmail.com</span></a>
+                <button class="copy-btn" type="button" data-copy="gununes.tech7@gmail.com" data-what="E-mail"
+                  aria-label="Copiar e-mail">COPIAR</button>
+              </div>
+              <div class="contact-row">
+                <a href="https://github.com/GustavoNunes7" target="_blank" rel="noopener noreferrer"><span class="pxi"
+                    data-px="code"></span><span class="k">GITHUB</span><span class="v">github.com/GustavoNunes7
+                    ↗</span></a>
+              </div>
+              <div class="contact-row">
+                <a href="https://www.linkedin.com/in/gustavo-nunes-da-silva7/" target="_blank"
+                  rel="noopener noreferrer"><span class="pxi" data-px="brief"></span><span
+                    class="k">LINKEDIN</span><span class="v">gustavo-nunes-da-silva7 ↗</span></a>
+              </div>
+              <div class="contact-row">
+                <a href="https://www.instagram.com/gununes.7/" target="_blank" rel="noopener noreferrer"><span
+                    class="pxi" data-px="camera"></span><span class="k">INSTAGRAM</span><span class="v">@gununes.7
+                    ↗</span></a>
+              </div>
+              <div class="contact-row">
+                <a href="tel:+5511965036665"><span class="pxi" data-px="phone"></span><span
+                    class="k">TELEFONE</span><span class="v">+55 11 96503-6665</span></a>
+                <button class="copy-btn" type="button" data-copy="+55 11 96503-6665" data-what="Telefone"
+                  aria-label="Copiar telefone">COPIAR</button>
+              </div>
+            </div>
+            <p class="contact-toast" id="contactToast" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/GustavoNunes7" target="_blank" rel="noopener noreferrer" class="link-px">GitHub
+          ↗</a>
+        <a href="https://www.linkedin.com/in/gustavo-nunes-da-silva7/" target="_blank" rel="noopener noreferrer"
+          class="link-px">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/gununes.7/" target="_blank" rel="noopener noreferrer"
+          class="link-px">Instagram ↗</a>
+      </div>
+      <p>&copy; 2026 Gustavo Nunes. Projetado e desenvolvido com tecnologia e precisão.</p>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo"><span class="pxi"
+      data-px="arrowup"></span></button>
+
+  <script src="js/pixel-art.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
