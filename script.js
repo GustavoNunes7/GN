@@ -181,13 +181,8 @@
     if (!stage || !canvas || !poster) return;
     if (window.GNPixel && window.GNPixel.drawFallback) window.GNPixel.drawFallback(poster);
 
-    const conn = navigator.connection || {};
-    const lowEnd =
-      conn.saveData ||
-      /(^|-)2g$/.test(conn.effectiveType || '') ||
-      (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
-      (navigator.deviceMemory && navigator.deviceMemory <= 2);
-    if (lowEnd) return; // fica com a arte 2D, sem baixar o Three.js
+    // Mantém o cenário 3D ativo também em dispositivos móveis.
+    // O renderer já usa pixel ratio 1, sem antialias e modo low-power.
 
     const mobile = matchMedia('(max-width: 760px)').matches;
     const load = () => {
