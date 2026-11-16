@@ -21,18 +21,39 @@
   };
 
 
-  /* ---------- Áudio opcional GN: trilha 8-bit sintetizada ---------- */
+  /* ---------- Áudio GN: ligado por padrão (inicia após a primeira interação) ---------- */
   function setupAudio() {
     const widget = $('#audioWidget');
     const toggle = $('#audioToggle');
     const volume = $('#audioVolume');
     if (!widget || !toggle || !volume) return;
-    let ctx = null, master = null, musicTimer = 0, step = 0, enabled = false;
+
+    let ctx = null, master = null, musicTimer = 0, step = 0;
+    let enabled = true;
+    let audioReady = false;
     const label = toggle.querySelector('.audio-label');
     const notes = [523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,987.77,880,783.99,659.25,587.33];
 
+    function ensureAudio() {
+      if (audioReady) return Promise.resolve();
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) { label.textContent = 'ÁUDIO INDISPONÍVEL'; return Promise.resolve(); }
+      try {
+        if (!ctx) {
+          ctx = new AC();
+          master = ctx.createGain();
+          master.gain.value = Number(volume.value) / 100;
+          master.connect(ctx.destination);
+        }
+        return ctx.resume().then(() => {
+          audioReady = ctx.state === 'running';
+          if (audioReady && enabled) startMusic();
+        }).catch(() => {});
+      } catch { return Promise.resolve(); }
+    }
+
     function tone(freq, duration=.09, wave='square', level=.12) {
-      if (!ctx || !master || ctx.state !== 'running') return;
+      if (!ctx || !master || ctx.state !== 'running' || !enabled) return;
       const osc=ctx.createOscillator(), gain=ctx.createGain();
       osc.type=wave; osc.frequency.setValueAtTime(freq,ctx.currentTime);
       gain.gain.setValueAtTime(.0001,ctx.currentTime);
@@ -40,11 +61,8 @@
       gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+duration);
       osc.connect(gain); gain.connect(master); osc.start(); osc.stop(ctx.currentTime+duration+.02);
     }
-    function updateVolume() {
-      if(master && ctx) master.gain.setTargetAtTime(Number(volume.value)/100,ctx.currentTime,.06);
-    }
     function startMusic() {
-      if(musicTimer) return;
+      if (musicTimer || !enabled) return;
       musicTimer=window.setInterval(()=>{
         if(!enabled || !ctx || ctx.state!=='running') return;
         const note=notes[step%notes.length];
@@ -54,29 +72,34 @@
       },250);
     }
     function stopMusic() { if(musicTimer) clearInterval(musicTimer); musicTimer=0; }
+    function renderState() {
+      toggle.setAttribute('aria-pressed',String(enabled));
+      toggle.setAttribute('aria-label',enabled?'Desativar trilha e efeitos sonoros':'Ativar trilha e efeitos sonoros');
+      label.textContent=enabled?(Number(volume.value)===0?'SOM: MUDO':'SOM: ON'):'SOM: OFF';
+    }
+
+    // Navegadores bloqueiam áudio automático. A trilha fica ON desde a abertura
+    // e começa assim que a pessoa interagir com a página pela primeira vez.
+    renderState();
+    ensureAudio();
+    const unlock = () => {
+      if (enabled) ensureAudio();
+    };
+    document.addEventListener('pointerdown', unlock, { once:true, capture:true });
+    document.addEventListener('keydown', unlock, { once:true, capture:true });
 
     toggle.addEventListener('click',async()=>{
-      if(!enabled) {
-        const AC=window.AudioContext||window.webkitAudioContext;
-        if(!AC) { label.textContent='ÁUDIO INDISPONÍVEL'; return; }
-        try {
-          if(!ctx) { ctx=new AC(); master=ctx.createGain(); master.gain.value=Number(volume.value)/100; master.connect(ctx.destination); }
-          await ctx.resume(); enabled=true;
-          toggle.setAttribute('aria-pressed','true');
-          toggle.setAttribute('aria-label','Desativar trilha e efeitos sonoros');
-          label.textContent=Number(volume.value)==0?'SOM: MUDO':'SOM: ON';
-          startMusic(); tone(783.99,.1,'square',.08);
-          setTimeout(()=>tone(1046.5,.12,'square',.07),90);
-        } catch { label.textContent='TENTE NOVAMENTE'; }
-      } else {
-        enabled=false; stopMusic(); toggle.setAttribute('aria-pressed','false');
-        toggle.setAttribute('aria-label','Ativar trilha e efeitos sonoros');
-        label.textContent='SOM: OFF';
+      enabled=!enabled;
+      if(enabled) await ensureAudio();
+      else {
+        stopMusic();
         if(master && ctx) master.gain.setTargetAtTime(0,ctx.currentTime,.04);
       }
+      if(enabled && master && ctx) master.gain.setTargetAtTime(Number(volume.value)/100,ctx.currentTime,.06);
+      renderState();
     });
     volume.addEventListener('input',()=>{
-      updateVolume();
+      if(master && ctx) master.gain.setTargetAtTime(Number(volume.value)/100,ctx.currentTime,.06);
       if(enabled) label.textContent=Number(volume.value)===0?'SOM: MUDO':'SOM: ON';
     });
     document.addEventListener('click',event=>{
@@ -86,8 +109,8 @@
       tone(target.matches('.nav-link')?660:740,.045,'square',.045);
     },true);
     document.addEventListener('visibilitychange',()=>{
-      if(document.hidden && enabled) stopMusic();
-      else if(!document.hidden && enabled) startMusic();
+      if(document.hidden) stopMusic();
+      else if(enabled) ensureAudio();
     });
   }
 
