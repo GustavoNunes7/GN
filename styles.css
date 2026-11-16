@@ -720,3 +720,13 @@ html:not(.js) .boot { display: none; }
   .certificate-overview .cert-thumb { padding: 10px; }
   .certificate-overview .cert-info { min-height: 138px; }
 }
+
+/* Personagens retrô: decoração leve das seções */
+.game-mascot-row{width:min(100%,760px);min-height:112px;margin:34px auto 0;padding:12px 18px;display:flex;align-items:center;justify-content:center;gap:22px;overflow:hidden;border:1px dashed rgba(111,227,160,.28);background:linear-gradient(100deg,rgba(10,31,68,.22),rgba(11,61,46,.16))}
+.game-mascot-row .tenor-gif-embed{width:112px!important;min-width:112px;max-width:112px;height:104px;overflow:hidden;flex:0 0 112px}
+.game-mascot-row .tenor-gif-embed iframe{max-width:100%!important}
+.mascot-caption{color:var(--green-l);font:.58rem var(--f-pixel);letter-spacing:1px;line-height:1.8}
+.pacman-pixel{width:66px;height:66px;flex:0 0 66px;position:relative;background:#ffdf35;clip-path:polygon(50% 50%,100% 0,100% 100%);border-radius:50%;filter:drop-shadow(0 0 12px rgba(255,223,53,.35));animation:pacman-chomp .55s steps(2,end) infinite alternate}
+@keyframes pacman-chomp{from{clip-path:polygon(50% 50%,100% 0,100% 100%)}to{clip-path:polygon(50% 50%,100% 28%,100% 72%)}}
+@media(max-width:640px){.game-mascot-row{min-height:88px;margin-top:24px;padding:8px 12px;gap:14px}.game-mascot-row .tenor-gif-embed{width:82px!important;min-width:82px;max-width:82px;height:78px;flex-basis:82px}.mascot-caption{font-size:.48rem}.pacman-pixel{width:50px;height:50px;flex-basis:50px}}
+@media(prefers-reduced-motion:reduce){.pacman-pixel{animation:none}}
