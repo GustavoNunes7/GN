@@ -662,3 +662,61 @@ html:not(.js) .boot { display: none; }
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+
+/* ---------- Vitrine de certificados: capas alinhadas ---------- */
+.certificate-overview {
+  align-items: stretch;
+}
+.certificate-overview .cert {
+  height: 100%;
+  min-height: 100%;
+}
+.certificate-overview .cert-thumb {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  padding: 12px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(36, 111, 180, .2), transparent 58%),
+    linear-gradient(145deg, #08182c, #07111d 58%, #09251f);
+}
+.certificate-overview .cert-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform .45s var(--ease), filter .45s var(--ease);
+}
+.certificate-overview .cert:hover .cert-thumb img {
+  transform: scale(1.035);
+}
+.certificate-overview .cert-info {
+  min-height: 150px;
+  height: 100%;
+}
+.certificate-overview .cert-info p {
+  line-height: 1.55;
+}
+.certificate-overview .cert-thumb-book {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(34, 197, 94, .15), transparent 56%),
+    linear-gradient(145deg, #07172f, #06111e 58%, #082d2a);
+}
+.certificate-overview .cert-thumb-book img {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  image-rendering: pixelated;
+}
+@media (max-width: 900px) {
+  .certificate-overview { gap: 18px; }
+}
+@media (max-width: 520px) {
+  .certificate-overview { gap: 16px; }
+  .certificate-overview .cert-thumb { padding: 10px; }
+  .certificate-overview .cert-info { min-height: 138px; }
+}
