@@ -749,3 +749,31 @@ html:not(.js) .boot { display: none; }
   .audio-volume input { width: 58px; }
 }
 @media (prefers-reduced-motion: reduce) { .audio-toggle { transition: none; } }
+
+
+/* HUD global de configurações + tema claro */
+.game-settings{position:fixed;right:22px;bottom:22px;z-index:1200;font-family:var(--f-mono)}
+.settings-trigger{width:46px;height:46px;border:1px solid rgba(111,227,160,.55);border-radius:8px;background:rgba(5,7,11,.94);color:var(--green-l);font-size:22px;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,.35),0 0 18px rgba(39,174,96,.12);transition:transform .2s,border-color .2s}
+.settings-trigger:hover{transform:rotate(35deg);border-color:var(--green)}
+.settings-panel{position:absolute;right:0;bottom:58px;width:min(330px,calc(100vw - 28px));padding:16px;border:1px solid var(--green);border-radius:8px;background:rgba(5,9,15,.98);color:#f5f7fa;box-shadow:0 16px 50px rgba(0,0,0,.55),0 0 24px rgba(39,174,96,.12);backdrop-filter:blur(16px)}
+.settings-panel[hidden]{display:none}.settings-heading{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(111,227,160,.25);font:700 11px var(--f-pixel);color:var(--green-l)}
+.settings-close{border:0;background:none;color:#94a3b8;font-size:24px;cursor:pointer}
+.settings-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid rgba(148,163,184,.16)}
+.settings-row strong,.settings-row small{display:block}.settings-row strong{font:600 12px var(--f-body)}.settings-row small{margin-top:3px;color:#94a3b8;font:10px var(--f-body)}
+.settings-option,.settings-switch{min-width:76px;padding:8px 9px;border:1px solid #31516c;border-radius:4px;background:#0d1b2b;color:#cbd5e1;font:700 9px var(--f-mono);cursor:pointer}
+.settings-switch.is-on{border-color:#27ae60;background:#0b3d2e;color:#9fffc0}
+.settings-volume{display:grid;gap:8px;padding-top:14px;color:#94a3b8;font:700 9px var(--f-mono)}.settings-volume input{width:100%;accent-color:#27ae60}
+.settings-hint{padding-top:10px;color:#8493a7;font:10px/1.5 var(--f-body)}
+@media(max-width:520px){.game-settings{right:12px;bottom:12px}.settings-trigger{width:42px;height:42px}.settings-panel{bottom:52px}}
+html[data-theme="light"]{--bg:#edf3f8;--surface:#fff;--text:#172538;--muted:#526579;--line:#a9bfd2;--blue-d:#dceaf7;--blue:#2369a8;--blue-l:#2476ad;--green-d:#d9f3e3;--green:#16834b;--green-l:#167a49}
+html[data-theme="light"] body{background:var(--bg);color:var(--text)}
+html[data-theme="light"] .bg-glow{background:radial-gradient(60% 50% at 12% 8%,rgba(81,151,211,.18),transparent 70%),radial-gradient(50% 45% at 92% 30%,rgba(39,174,96,.12),transparent 70%),linear-gradient(180deg,#f7fbff,#eaf2f8)}
+html[data-theme="light"] .bg-grid{opacity:.22}html[data-theme="light"] .scanlines{opacity:.08}
+html[data-theme="light"] .px{background:linear-gradient(var(--c),var(--c)) 0 0/6px 6px no-repeat,linear-gradient(var(--c),var(--c)) 100% 100%/6px 6px no-repeat,#fff;box-shadow:5px 5px 0 rgba(32,61,84,.14)}
+html[data-theme="light"] .navbar,html[data-theme="light"] .footer,html[data-theme="light"] .cert-card,html[data-theme="light"] .project-card,html[data-theme="light"] .skill-card,html[data-theme="light"] .about-card,html[data-theme="light"] .timeline-card{background-color:rgba(255,255,255,.94);color:var(--text);border-color:#c4d5e3}
+html[data-theme="light"] .settings-panel{background:rgba(255,255,255,.98);color:#172538;border-color:#16834b}
+html[data-theme="light"] .settings-row{border-color:#d6e1e9}
+html[data-theme="light"] .settings-row small,html[data-theme="light"] .settings-volume,html[data-theme="light"] .settings-hint{color:#526579}
+html[data-theme="light"] .settings-option{background:#e8f1f8;color:#203b53;border-color:#9bb4c8}
+html[data-theme="light"] .settings-switch.is-on{background:#d9f3e3;color:#11683d}
+html[data-theme="light"] .boot{background:#edf3f8;color:#172538}
