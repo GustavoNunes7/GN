@@ -513,6 +513,17 @@
     </div>
   </footer>
 
+  <div class="audio-widget" id="audioWidget">
+    <button class="audio-toggle" id="audioToggle" type="button" aria-pressed="false" aria-label="Ativar trilha e efeitos sonoros">
+      <span class="audio-icon" aria-hidden="true">♫</span>
+      <span class="audio-label">SOM: OFF</span>
+    </button>
+    <label class="audio-volume" for="audioVolume" title="Volume do áudio">
+      <span aria-hidden="true">VOL</span>
+      <input id="audioVolume" type="range" min="0" max="35" value="16" aria-label="Volume do áudio" />
+    </label>
+  </div>
+
   <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo"><span class="pxi"
       data-px="arrowup"></span></button>
 
