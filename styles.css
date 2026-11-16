@@ -742,10 +742,10 @@ html:not(.js) .boot { display: none; }
 .audio-toggle[aria-pressed="true"] { color: #9fffc0; border-color: #27ae60; }
 .audio-icon { font-size: 17px; line-height: 1; }
 .audio-volume { display: flex; align-items: center; gap: 7px; color: #94a3b8; font: 700 9px/1 'Inter',sans-serif; }
-.audio-volume input { width: 66px; accent-color: #27ae60; cursor: pointer; }
+.audio-volume input { width: 88px; accent-color: #27ae60; cursor: pointer; }
 @media (max-width: 520px) {
   .audio-widget { right: 12px; bottom: 12px; gap: 6px; padding: 6px; }
   .audio-toggle { min-height: 36px; padding: 0 8px; }
-  .audio-volume input { width: 48px; }
+  .audio-volume input { width: 58px; }
 }
 @media (prefers-reduced-motion: reduce) { .audio-toggle { transition: none; } }
