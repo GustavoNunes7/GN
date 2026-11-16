@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 315" role="img" aria-labelledby="title desc">
+  <title id="title">Livro pixelado</title>
+  <desc id="desc">Livro aberto em estilo pixel art, com páginas azul-claro e detalhes verdes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07172f"/><stop offset="1" stop-color="#082d2a"/></linearGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e4fbff"/><stop offset="1" stop-color="#69d8e8"/></linearGradient>
+  </defs>
+  <rect width="560" height="315" fill="url(#bg)"/>
+  <g fill="#38bdf8" opacity=".55">
+    <rect x="72" y="58" width="8" height="8"/><rect x="470" y="83" width="8" height="8"/><rect x="108" y="226" width="7" height="7"/><rect x="430" y="236" width="7" height="7"/>
+  </g>
+  <g shape-rendering="crispEdges">
+    <path d="M126 104h126v18h-18v16h-18v16h-18v16h-18v16h-18v16h-18v-16h-18z" fill="#06101f" opacity=".7"/>
+    <path d="M280 220h-18v-16h-18v-16h-18v-16h-18v-16h-18v-16h-18v-16h-18v-18h126z" fill="#06101f" opacity=".7"/>
+    <path d="M120 94h132v18h-18v16h-18v16h-18v16h-18v16h-18v16h-18v-16h-18z" fill="#1d4ed8"/>
+    <path d="M280 212h-18v-16h-18v-16h-18v-16h-18v-16h-18v-16h-18v-16h-18v-18h126z" fill="#1d4ed8"/>
+    <path d="M124 82h128v18h-18v16h-18v16h-18v16h-18v16h-18v16h-18v-16h-18z" fill="url(#page)"/>
+    <path d="M280 200h-18v-16h-18v-16h-18v-16h-18v-16h-18v-16h-18v-16h-18v-18h126z" fill="url(#page)"/>
+    <path d="M252 82h28v118h-28z" fill="#0b1d37"/>
+    <path d="M142 105h82v8h-82zm0 18h66v8h-66zm0 18h76v8h-76zm0 18h58v8h-58z" fill="#2563eb"/>
+    <path d="M298 105h82v8h-82zm0 18h66v8h-66zm0 18h76v8h-76zm0 18h58v8h-58z" fill="#0f766e"/>
+    <path d="M120 82h18v16h-18zm142 102h18v16h-18z" fill="#86efac"/>
+    <path d="M252 82h28v12h-28z" fill="#38bdf8"/>
+    <path d="M112 202h18v8h-18zm318-92h18v8h-18z" fill="#86efac"/>
+  </g>
+  <path d="M108 230h344" stroke="#22c55e" stroke-width="4" opacity=".7"/>
+</svg>
