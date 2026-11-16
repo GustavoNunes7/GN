@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Jogo da Capivarinha</title><desc id="desc">Ilustração de uma capivara em uma paisagem colorida com uma estrada e um pequeno carro ao fundo.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102b38"/><stop offset="1" stop-color="#153d32"/></linearGradient>
+ <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f4d58d"/><stop offset="1" stop-color="#e99a63"/></linearGradient>
+ <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bd8757"/><stop offset="1" stop-color="#80543b"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<circle cx="920" cy="135" r="76" fill="url(#sun)" opacity=".95"/>
+<path d="M0 390 Q190 300 380 385T760 365T1200 350V675H0Z" fill="#244d40"/>
+<path d="M0 480 Q260 420 480 470T900 445T1200 465V675H0Z" fill="#32634a"/>
+<path d="M0 560 C280 480 430 590 650 535 S990 470 1200 535" fill="none" stroke="#d5b67a" stroke-width="74" opacity=".9"/>
+<path d="M0 560 C280 480 430 590 650 535 S990 470 1200 535" fill="none" stroke="#f0d7a0" stroke-width="4" stroke-dasharray="24 24" opacity=".9"/>
+<ellipse cx="520" cy="565" rx="235" ry="36" fill="#071b18" opacity=".48" filter="url(#shadow)"/>
+<!-- capybara -->
+<ellipse cx="525" cy="430" rx="190" ry="132" fill="url(#fur)"/>
+<ellipse cx="640" cy="395" rx="106" ry="88" fill="#a8734c"/>
+<ellipse cx="716" cy="425" rx="80" ry="54" fill="#d0a078"/>
+<ellipse cx="748" cy="424" rx="45" ry="28" fill="#e1bd99"/>
+<circle cx="685" cy="367" r="12" fill="#171817"/>
+<circle cx="689" cy="363" r="4" fill="#fff"/>
+<ellipse cx="620" cy="314" rx="29" ry="38" fill="#8a5a3e"/>
+<ellipse cx="620" cy="315" rx="14" ry="22" fill="#d29a76"/>
+<path d="M425 515 Q405 552 426 573H470Q480 547 468 520M580 520Q570 552 591 574H636Q642 548 628 516" fill="#704831"/>
+<path d="M780 437 Q810 445 818 465" fill="none" stroke="#704831" stroke-width="8" stroke-linecap="round"/>
+<!-- distant car -->
+<g transform="translate(870 440)"><path d="M0 36L18 5Q25 -7 43 -7H92Q111 -7 121 12L139 36V65H0Z" fill="#e0a94f"/><path d="M31 4H91L111 31H16Z" fill="#8bc3c5"/><circle cx="31" cy="65" r="16" fill="#17252a"/><circle cx="108" cy="65" r="16" fill="#17252a"/></g>
+<g fill="#e7f1df" opacity=".9"><circle cx="155" cy="140" r="4"/><circle cx="235" cy="205" r="3"/><circle cx="1040" cy="270" r="5"/><circle cx="1100" cy="190" r="3"/></g>
+<rect x="42" y="42" width="1116" height="591" rx="22" fill="none" stroke="#8ac6a2" stroke-opacity=".35" stroke-width="2"/>
+<text x="78" y="105" fill="#d8efdf" font-family="Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="5">PYTHON • CLIENTE / SERVIDOR</text>
+<text x="78" y="165" fill="#fff" font-family="Arial,sans-serif" font-size="48" font-weight="800">JOGO DA CAPIVARINHA</text>
+</svg>
