@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Qual é a Boa?</title><desc id="desc">Prévia ilustrada de um aplicativo mobile para adicionar opções e sortear uma atividade.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17152e"/><stop offset="1" stop-color="#292052"/></linearGradient>
+ <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9a78ff"/><stop offset="1" stop-color="#6244d9"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="24"/></filter>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<circle cx="260" cy="180" r="150" fill="#7c5ce0" opacity=".18" filter="url(#glow)"/>
+<circle cx="950" cy="520" r="180" fill="#9b76ff" opacity=".16" filter="url(#glow)"/>
+<g transform="translate(440 42)">
+ <rect x="0" y="0" width="320" height="590" rx="48" fill="#0b0a13" stroke="#a58aff" stroke-width="5"/>
+ <rect x="14" y="14" width="292" height="562" rx="36" fill="#17152a"/>
+ <rect x="112" y="22" width="96" height="12" rx="6" fill="#37334d"/>
+ <text x="160" y="105" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="33" font-weight="800">Qual é a boa?</text>
+ <text x="160" y="135" fill="#b8addb" text-anchor="middle" font-family="Arial,sans-serif" font-size="15">Monte sua lista e deixe a sorte decidir</text>
+ <rect x="38" y="166" width="244" height="150" rx="22" fill="#28213f" stroke="#9474f6" stroke-width="2"/>
+ <text x="160" y="222" fill="#b6a2ff" text-anchor="middle" font-family="Arial,sans-serif" font-size="17">RESULTADO</text>
+ <text x="160" y="270" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="37" font-weight="800">🍕 Pizza</text>
+ <rect x="38" y="337" width="244" height="54" rx="15" fill="url(#purple)"/>
+ <text x="160" y="371" fill="#fff" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700">Sortear agora</text>
+ <text x="42" y="430" fill="#fff" font-family="Arial,sans-serif" font-size="18" font-weight="700">Suas opções</text>
+ <rect x="38" y="448" width="244" height="42" rx="12" fill="#25213b"/><text x="60" y="475" fill="#eee" font-family="Arial,sans-serif" font-size="16">Hambúrguer</text>
+ <rect x="38" y="500" width="244" height="42" rx="12" fill="#25213b"/><text x="60" y="527" fill="#eee" font-family="Arial,sans-serif" font-size="16">Sushi</text>
+</g>
+<g fill="#d9ceff"><circle cx="250" cy="410" r="5"/><circle cx="315" cy="260" r="3"/><circle cx="900" cy="150" r="4"/><circle cx="970" cy="280" r="6"/></g>
+<text x="85" y="105" fill="#c8b9ff" font-family="Arial,sans-serif" font-size="23" font-weight="700" letter-spacing="5">MOBILE APP • EXPO</text>
+<text x="85" y="165" fill="#fff" font-family="Arial,sans-serif" font-size="47" font-weight="800">QUAL É A BOA?</text>
+<text x="85" y="205" fill="#c8c1dc" font-family="Arial,sans-serif" font-size="21">Uma escolha a menos para fazer.</text>
+</svg>
