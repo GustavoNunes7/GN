@@ -720,3 +720,32 @@ html:not(.js) .boot { display: none; }
   .certificate-overview .cert-thumb { padding: 10px; }
   .certificate-overview .cert-info { min-height: 138px; }
 }
+
+
+/* ---------- GN Audio: trilha 8-bit opcional + controle ---------- */
+.audio-widget {
+  position: fixed; z-index: 1000; right: 22px; bottom: 22px;
+  display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+  border: 1px solid rgba(39,174,96,.45); border-radius: 8px;
+  background: rgba(5,7,11,.94);
+  box-shadow: 0 8px 28px rgba(0,0,0,.35), 0 0 18px rgba(39,174,96,.08);
+  backdrop-filter: blur(12px);
+}
+.audio-toggle {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 38px;
+  padding: 0 10px; border: 1px solid rgba(39,174,96,.35); border-radius: 5px;
+  color: #f5f7fa; background: rgba(11,61,46,.32);
+  font: 700 11px/1 'Inter',sans-serif; letter-spacing: .06em; cursor: pointer;
+  transition: background .2s ease,border-color .2s ease,transform .2s ease;
+}
+.audio-toggle:hover { background: rgba(39,174,96,.2); border-color: #27ae60; transform: translateY(-1px); }
+.audio-toggle[aria-pressed="true"] { color: #9fffc0; border-color: #27ae60; }
+.audio-icon { font-size: 17px; line-height: 1; }
+.audio-volume { display: flex; align-items: center; gap: 7px; color: #94a3b8; font: 700 9px/1 'Inter',sans-serif; }
+.audio-volume input { width: 66px; accent-color: #27ae60; cursor: pointer; }
+@media (max-width: 520px) {
+  .audio-widget { right: 12px; bottom: 12px; gap: 6px; padding: 6px; }
+  .audio-toggle { min-height: 36px; padding: 0 8px; }
+  .audio-volume input { width: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { .audio-toggle { transition: none; } }
