@@ -20,6 +20,77 @@
     set: (k, v) => { try { sessionStorage.setItem(k, v); } catch { /* ignora */ } },
   };
 
+
+  /* ---------- Áudio opcional GN: trilha 8-bit sintetizada ---------- */
+  function setupAudio() {
+    const widget = $('#audioWidget');
+    const toggle = $('#audioToggle');
+    const volume = $('#audioVolume');
+    if (!widget || !toggle || !volume) return;
+    let ctx = null, master = null, musicTimer = 0, step = 0, enabled = false;
+    const label = toggle.querySelector('.audio-label');
+    const notes = [523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,987.77,880,783.99,659.25,587.33];
+
+    function tone(freq, duration=.09, wave='square', level=.12) {
+      if (!ctx || !master || ctx.state !== 'running') return;
+      const osc=ctx.createOscillator(), gain=ctx.createGain();
+      osc.type=wave; osc.frequency.setValueAtTime(freq,ctx.currentTime);
+      gain.gain.setValueAtTime(.0001,ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(level,ctx.currentTime+.012);
+      gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+duration);
+      osc.connect(gain); gain.connect(master); osc.start(); osc.stop(ctx.currentTime+duration+.02);
+    }
+    function updateVolume() {
+      if(master && ctx) master.gain.setTargetAtTime(Number(volume.value)/100,ctx.currentTime,.06);
+    }
+    function startMusic() {
+      if(musicTimer) return;
+      musicTimer=window.setInterval(()=>{
+        if(!enabled || !ctx || ctx.state!=='running') return;
+        const note=notes[step%notes.length];
+        tone(note,.12,'square',.055);
+        if(step%4===0) tone(note/2,.16,'triangle',.035);
+        step++;
+      },250);
+    }
+    function stopMusic() { if(musicTimer) clearInterval(musicTimer); musicTimer=0; }
+
+    toggle.addEventListener('click',async()=>{
+      if(!enabled) {
+        const AC=window.AudioContext||window.webkitAudioContext;
+        if(!AC) { label.textContent='ÁUDIO INDISPONÍVEL'; return; }
+        try {
+          if(!ctx) { ctx=new AC(); master=ctx.createGain(); master.gain.value=Number(volume.value)/100; master.connect(ctx.destination); }
+          await ctx.resume(); enabled=true;
+          toggle.setAttribute('aria-pressed','true');
+          toggle.setAttribute('aria-label','Desativar trilha e efeitos sonoros');
+          label.textContent=Number(volume.value)==0?'SOM: MUDO':'SOM: ON';
+          startMusic(); tone(783.99,.1,'square',.08);
+          setTimeout(()=>tone(1046.5,.12,'square',.07),90);
+        } catch { label.textContent='TENTE NOVAMENTE'; }
+      } else {
+        enabled=false; stopMusic(); toggle.setAttribute('aria-pressed','false');
+        toggle.setAttribute('aria-label','Ativar trilha e efeitos sonoros');
+        label.textContent='SOM: OFF';
+        if(master && ctx) master.gain.setTargetAtTime(0,ctx.currentTime,.04);
+      }
+    });
+    volume.addEventListener('input',()=>{
+      updateVolume();
+      if(enabled) label.textContent=Number(volume.value)===0?'SOM: MUDO':'SOM: ON';
+    });
+    document.addEventListener('click',event=>{
+      if(!enabled || event.target.closest('#audioWidget')) return;
+      const target=event.target.closest('a,button');
+      if(!target || target.matches('.copy-btn')) return;
+      tone(target.matches('.nav-link')?660:740,.045,'square',.045);
+    },true);
+    document.addEventListener('visibilitychange',()=>{
+      if(document.hidden && enabled) stopMusic();
+      else if(!document.hidden && enabled) startMusic();
+    });
+  }
+
   /* ---------- Ícones pixel ---------- */
   const hydrate = () => window.GNPixel && window.GNPixel.hydrateIcons(document);
   hydrate();
@@ -331,6 +402,7 @@
     setTimeout(finish, 3000); // rede de segurança
   }
 
+  setupAudio();
   setupCertFilters();
   setupContact();
   boot();
