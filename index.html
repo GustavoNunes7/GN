@@ -288,22 +288,24 @@
         <header class="sec-head" data-reveal>
           <span class="sec-idx">// 03 · QUESTS.log</span>
           <h2 class="sec-title" id="t-proj">Projetos em <span>Destaque</span></h2>
+          <p class="sec-sub">Projetos que representam minha evolução em desenvolvimento web, mobile e Python.</p>
         </header>
 
         <div class="projetos-wrapper">
           <article class="projeto-card featured px green" data-reveal data-tilt>
-            <div class="projeto-preview">
+            <div class="projeto-preview project-cover">
               <span class="featured-flag">PROJETO PRINCIPAL</span>
-              <div class="preview-art"><span class="pxi" data-px="bigGear"></span></div>
-              <span class="preview-tag">ARTE ILUSTRATIVA</span>
+              <img src="https://raw.githubusercontent.com/GustavoNunes7/TechCampus/main/public/landing/images/Imagem_tela_de_inicio.png"
+                alt="Tela inicial do sistema TechCampus" width="1200" height="675" loading="lazy" decoding="async" />
+              <span class="preview-tag">SISTEMA WEB · FULL STACK</span>
             </div>
             <div class="projeto-info">
-              <span class="status-chip"><i></i>CÓDIGO NO GITHUB</span>
-              <h3>MetalTech</h3>
-              <p>Uma aplicação completa focada em resolver o problema de gerenciamento.</p>
-              <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              <span class="status-chip"><i></i>PROJETO EM DESENVOLVIMENTO</span>
+              <h3>TechCampus</h3>
+              <p>Sistema web para gestão da AAPM escolar, reunindo área do aluno, administração, loja, pedidos e recursos de integração com IoT.</p>
+              <div class="tech-tags"><span>Node.js</span><span>Express</span><span>SQLite</span><span>JavaScript</span></div>
               <div class="projeto-links">
-                <a href="https://github.com/GustavoNunes7/MetalTech-3.0" class="btn btn-ghost" target="_blank"
+                <a href="https://github.com/GustavoNunes7/TechCampus" class="btn btn-ghost" target="_blank"
                   rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
               </div>
             </div>
@@ -312,35 +314,33 @@
 
           <div class="projetos-grid">
             <article class="projeto-card normal px" data-reveal data-tilt>
-              <div class="projeto-preview">
-                <div class="preview-art"><span class="pxi" data-px="ball"></span></div>
-                <span class="preview-tag">ARTE ILUSTRATIVA</span>
+              <div class="projeto-preview project-cover">
+                <img src="./images/projects/qual-e-a-boa.svg" alt="Capa ilustrativa do aplicativo Qual é a Boa?" width="1200" height="675" loading="lazy" decoding="async" />
+                <span class="preview-tag">APLICATIVO MOBILE</span>
               </div>
               <div class="projeto-info">
-                <span class="status-chip live"><i></i>ONLINE</span>
-                <h3>Tabela do Brasileirão 2025</h3>
-                <p>Criação da Tabela do Campeonato Brasileiro de Futebol de 2025.</p>
-                <div class="tech-tags"><span>HTML</span><span>CSS</span></div>
+                <span class="status-chip"><i></i>APP EM DESENVOLVIMENTO</span>
+                <h3>Qual é a Boa?</h3>
+                <p>Aplicativo mobile para montar listas de opções e sortear uma escolha, inclusive ao chacoalhar o celular.</p>
+                <div class="tech-tags"><span>React Native</span><span>Expo</span><span>JavaScript</span></div>
                 <div class="projeto-links">
-                  <a href="https://github.com/GustavoNunes7/Tabela_do_Brasileirao_2025_no-HTML" class="btn btn-ghost"
-                    target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-                  <a href="https://gustavonunes7.github.io/Tabela_do_Brasileirao_2025_no-HTML/" class="btn btn-green"
-                    target="_blank" rel="noopener noreferrer">Ver Online <span aria-hidden="true">↗</span></a>
+                  <a href="https://github.com/GustavoNunes7/Qual-e-a-boa-app" class="btn btn-ghost" target="_blank"
+                    rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
               <span class="glare" aria-hidden="true"></span>
             </article>
 
             <article class="projeto-card normal px" data-reveal data-tilt style="--d: 1">
-              <div class="projeto-preview">
-                <div class="preview-art"><span class="pxi" data-px="capybara"></span></div>
-                <span class="preview-tag">ARTE ILUSTRATIVA</span>
+              <div class="projeto-preview project-cover">
+                <img src="./images/projects/capivarinha.svg" alt="Capa ilustrativa do Jogo da Capivarinha" width="1200" height="675" loading="lazy" decoding="async" />
+                <span class="preview-tag">PYTHON · CLIENTE / SERVIDOR</span>
               </div>
               <div class="projeto-info">
-                <span class="status-chip"><i></i>CÓDIGO NO GITHUB</span>
+                <span class="status-chip"><i></i>PROJETO NO GITHUB</span>
                 <h3>Jogo da Capivarinha</h3>
-                <p>Integração de Cliente e Servidor em um Jogo de uma Capivara.</p>
-                <div class="tech-tags"><span>Python</span></div>
+                <p>Jogo em Python com comunicação entre cliente e servidor, no qual o jogador tenta descobrir o número e salvar a capivarinha.</p>
+                <div class="tech-tags"><span>Python</span><span>WebSockets</span><span>Asyncio</span></div>
                 <div class="projeto-links">
                   <a href="https://github.com/GustavoNunes7/Jogo-da-Capivarinha" class="btn btn-ghost" target="_blank"
                     rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
@@ -401,224 +401,60 @@
         <header class="sec-head" data-reveal>
           <span class="sec-idx">// 05 · ACHIEVEMENTS.db</span>
           <h2 class="sec-title" id="t-cert">Certificados</h2>
-          <p class="sec-sub">Formação e cursos realizados. Cada card abre o documento original.</p>
+          <p class="sec-sub">Minhas formações organizadas por instituição. Selecione uma categoria para consultar os certificados.</p>
         </header>
 
-        <div class="filters" id="certFilters" role="group" aria-label="Filtrar certificados por instituição"
-          data-reveal>
-          <button class="chip" type="button" aria-pressed="true" data-filter="all" data-kicker="Todas as instituições"
-            data-title="Todos" data-desc="29 certificados em 5 categorias." data-href="">Todos
-            <small>29</small></button>
-          <button class="chip" type="button" aria-pressed="false" data-filter="senai"
-            data-kicker="Educação Profissional" data-title="SENAI"
-            data-desc="Cursos SENAI — competências transversais e qualificações técnicas."
-            data-href="./Cursos/senai.html">SENAI <small>17</small></button>
-          <button class="chip" type="button" aria-pressed="false" data-filter="sebrae" data-kicker="Empreendedorismo"
-            data-title="SEBRAE" data-desc="Trilha Vitrine Sebrae — atitude empreendedora e criatividade."
-            data-href="./Cursos/sebrae.html">SEBRAE <small>7</small></button>
-          <button class="chip" type="button" aria-pressed="false" data-filter="sesi" data-kicker="Formação Base"
-            data-title="SESI" data-desc="Participação escolar — eventos e competições."
-            data-href="./Cursos/sesi.html">SESI <small>2</small></button>
-          <button class="chip" type="button" aria-pressed="false" data-filter="bradesco"
-            data-kicker="Buscar novas oportunidades" data-title="Fundação Bradesco"
-            data-desc="Cursos Fundação Bradesco." data-href="./Cursos/fundacaoBradesco.html">Fundação Bradesco
-            <small>1</small></button>
-          <button class="chip" type="button" aria-pressed="false" data-filter="extras"
-            data-kicker="Conhecimentos para o Futuro" data-title="Outros Cursos"
-            data-desc="Cursos extras e complementares." data-href="./Cursos/outrosCursos.html">Extras
-            <small>2</small></button>
-        </div>
-        <div class="inst-bar" id="instBar" aria-live="polite"><span><b>Todos</b> — 29 certificados em 5
-            categorias.</span></div>
+        <div class="certificate-grid certificate-overview">
+          <a class="cert cert-summary px" href="./Cursos/senai.html" data-reveal data-tilt>
+            <div class="cert-thumb"><span class="cert-badge">17 CERTIFICADOS</span><img src="./images/cursos/senai.jpg" alt="Identidade visual dos cursos SENAI" width="560" height="400" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>SENAI</h3>
+              <p>Educação profissional e qualificações técnicas</p>
+              <span class="cert-actions"><span class="link-px">Visualizar certificados →</span></span>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </a>
 
-        <div class="certificate-grid" id="certGrid">
-          <article class="cert cert-summary px" data-inst="senai" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SENAI</span><span class="pxi" data-px="cap"></span></div>
+          <a class="cert cert-summary px" href="./Cursos/sebrae.html" data-reveal data-tilt style="--d: 1">
+            <div class="cert-thumb"><span class="cert-badge">7 CERTIFICADOS</span><img src="./images/cursos/sebrae.jpg" alt="Identidade visual dos cursos SEBRAE" width="560" height="400" loading="lazy" decoding="async" /></div>
             <div class="cert-info">
-              <h3>Cursos SENAI</h3>
-              <p>Educação Profissional · 17 qualificações</p>
-              <div class="cert-actions"><a href="./Cursos/senai.html" class="link-px">Visualizar &rarr;</a></div>
+              <h3>SEBRAE</h3>
+              <p>Empreendedorismo, criatividade e desenvolvimento</p>
+              <span class="cert-actions"><span class="link-px">Visualizar certificados →</span></span>
             </div>
             <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
-                src="./images/thumbs/sebrae-vai-la-e-faz.jpg" alt="Miniatura do certificado Vai Lá e Faz" width="560"
-                height="396" loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Vai Lá e Faz</h3>
-              <p>Vitrine Sebrae</p>
-              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Vai%20L%C3%A1%20e%20Faz.pdf"
-                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Vitrine%20Sebrae/Vai%20L%C3%A1%20e%20Faz.pdf" class="link-px"
-                  download="Vai Lá e Faz.pdf">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
-                src="./images/thumbs/sebrae-cheio-de-atitude.jpg" alt="Miniatura do certificado Cheio de Atitude"
-                width="560" height="396" loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Cheio de Atitude</h3>
-              <p>Vitrine Sebrae</p>
-              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Cheio%20de%20Atitude.pdf"
-                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Vitrine%20Sebrae/Cheio%20de%20Atitude.pdf" class="link-px"
-                  download="Cheio de Atitude.pdf">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img src="./images/thumbs/sebrae-fala-ai.jpg"
-                alt="Miniatura do certificado Fala aí" width="560" height="396" loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Fala aí</h3>
-              <p>Vitrine Sebrae</p>
-              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Fala%20a%C3%AD.pdf" class="link-px"
-                  target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Vitrine%20Sebrae/Fala%20a%C3%AD.pdf" class="link-px"
-                  download="Fala aí.pdf">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
-                src="./images/thumbs/sebrae-meu-sucesso.jpg" alt="Miniatura do certificado Meu Sucesso" width="560"
-                height="396" loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Meu Sucesso</h3>
-              <p>Vitrine Sebrae</p>
-              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Meu%20Sucesso.pdf" class="link-px"
-                  target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Vitrine%20Sebrae/Meu%20Sucesso.pdf" class="link-px"
-                  download="Meu Sucesso.pdf">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
-                src="./images/thumbs/sebrae-criativos.jpg"
-                alt="Miniatura do certificado Criativos: O que são? Onde vivem? Do que se alimentam?" width="560"
-                height="396" loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Criativos: O que são? Onde vivem? Do que se alimentam?</h3>
-              <p>Vitrine Sebrae</p>
-              <div class="cert-actions"><a
-                  href="./certificados/Vitrine%20Sebrae/Criativos%20O%20que%20s%C3%A3o%20Onde%20vivem%20Do%20que%20se%20alimentam.pdf"
-                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Vitrine%20Sebrae/Criativos%20O%20que%20s%C3%A3o%20Onde%20vivem%20Do%20que%20se%20alimentam.pdf"
-                  class="link-px" download="Criativos O que são Onde vivem Do que se alimentam.pdf">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
-                src="./images/thumbs/sebrae-fui-la-e-fiz.jpg" alt="Miniatura do certificado Fui lá e fiz" width="560"
-                height="396" loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Fui lá e fiz</h3>
-              <p>Vitrine Sebrae</p>
-              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Fui%20l%C3%A1%20e%20fiz.pdf"
-                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Vitrine%20Sebrae/Fui%20l%C3%A1%20e%20fiz.pdf" class="link-px"
-                  download="Fui lá e fiz.pdf">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sebrae" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SEBRAE</span><img
-                src="./images/thumbs/sebrae-metamorfose.jpg" alt="Miniatura do certificado Essa Metamorfose Ambulante"
-                width="560" height="396" loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Essa Metamorfose Ambulante</h3>
-              <p>Vitrine Sebrae</p>
-              <div class="cert-actions"><a href="./certificados/Vitrine%20Sebrae/Essa%20Metamorfose%20Ambulante.pdf"
-                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Vitrine%20Sebrae/Essa%20Metamorfose%20Ambulante.pdf" class="link-px"
-                  download="Essa Metamorfose Ambulante.pdf">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sesi" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SESI</span><img src="./images/thumbs/sesi-selibi-2025.jpg"
-                alt="Miniatura do certificado Participação Selibi 2025" width="560" height="401" loading="lazy"
-                decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Participação Selibi 2025</h3>
-              <p>Evento / Competição</p>
-              <div class="cert-actions"><a href="./certificados/Sesi/Selibi2025.jpg" class="link-px" target="_blank"
-                  rel="noopener noreferrer">Ver original ↗</a><a href="./certificados/Sesi/Selibi2025.jpg"
-                  class="link-px" download="Selibi2025.jpg">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="sesi" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">SESI</span><img src="./images/thumbs/sesi-canguru-2025.jpg"
-                alt="Miniatura do certificado Canguru de Matemática 2025" width="560" height="301" loading="lazy"
-                decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Canguru de Matemática 2025</h3>
-              <p>Olimpíada / Participação</p>
-              <div class="cert-actions"><a href="./certificados/Sesi/Canguru%202025.png" class="link-px" target="_blank"
-                  rel="noopener noreferrer">Ver original ↗</a><a href="./certificados/Sesi/Canguru%202025.png"
-                  class="link-px" download="Canguru 2025.png">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="bradesco" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">BRADESCO</span><img
-                src="./images/thumbs/bradesco-educacao-financeira.jpg"
-                alt="Miniatura do certificado Educação Financeira" width="560" height="433" loading="lazy"
-                decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Educação Financeira</h3>
-              <p>Fundação Bradesco</p>
-              <div class="cert-actions"><a
-                  href="./certificados/Funda%C3%A7%C3%A3o%20Bradesco/Certificado_Educa%C3%A7%C3%A3o_Financeira.pdf"
-                  class="link-px" target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Funda%C3%A7%C3%A3o%20Bradesco/Certificado_Educa%C3%A7%C3%A3o_Financeira.pdf"
-                  class="link-px" download="Certificado_Educação_Financeira.pdf">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="extras" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">EXTRAS</span><img src="./images/thumbs/extras-conecta.jpg"
-                alt="Miniatura do certificado Conecta — Comunicação &amp; Multimídia" width="560" height="394"
-                loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Conecta — Comunicação &amp; Multimídia</h3>
-              <p>Curso realizado na Igreja</p>
-              <div class="cert-actions"><a href="./certificados/Extras/ConectaMidia.jpg" class="link-px" target="_blank"
-                  rel="noopener noreferrer">Ver original ↗</a><a href="./certificados/Extras/ConectaMidia.jpg"
-                  class="link-px" download="Conecta-Comunicação&amp;Multimídia.jpg">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-          <article class="cert px" data-inst="extras" data-reveal data-tilt>
-            <div class="cert-thumb"><span class="cert-badge">EXTRAS</span><img src="./images/thumbs/extras-gemini.jpg"
-                alt="Miniatura do certificado Gemini Academy para Universitários 2026" width="560" height="396"
-                loading="lazy" decoding="async" /></div>
-            <div class="cert-info">
-              <h3>Gemini Academy para Universitários 2026</h3>
-              <p>Funcionalidades do Google Gemini</p>
-              <div class="cert-actions"><a href="./certificados/Extras/GeminiAcademy.jpg" class="link-px"
-                  target="_blank" rel="noopener noreferrer">Ver original ↗</a><a
-                  href="./certificados/Extras/GeminiAcademy.jpg" class="link-px"
-                  download="Gemini Academy para Universitários 2026.jpg">Baixar ↓</a></div>
-            </div>
-            <span class="glare" aria-hidden="true"></span>
-          </article>
-        </div>
+          </a>
 
-        <nav class="inst-pages" aria-label="Páginas completas por instituição" data-reveal>
-          <span>PÁGINAS COMPLETAS:</span>
-          <a class="link-px" href="./Cursos/senai.html">SENAI</a>
-          <a class="link-px" href="./Cursos/sebrae.html">SEBRAE</a>
-          <a class="link-px" href="./Cursos/sesi.html">SESI</a>
-          <a class="link-px" href="./Cursos/fundacaoBradesco.html">Fundação Bradesco</a>
-          <a class="link-px" href="./Cursos/outrosCursos.html">Outros Cursos</a>
-        </nav>
+          <a class="cert cert-summary px" href="./Cursos/sesi.html" data-reveal data-tilt style="--d: 2">
+            <div class="cert-thumb"><span class="cert-badge">2 CERTIFICADOS</span><img src="./images/cursos/sesi.jpg" alt="Identidade visual dos certificados SESI" width="560" height="400" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>SESI</h3>
+              <p>Participações, eventos e atividades escolares</p>
+              <span class="cert-actions"><span class="link-px">Visualizar certificados →</span></span>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </a>
+
+          <a class="cert cert-summary px" href="./Cursos/fundacaoBradesco.html" data-reveal data-tilt style="--d: 3">
+            <div class="cert-thumb"><span class="cert-badge">1 CERTIFICADO</span><img src="./images/cursos/fundacaoBradesco.jpg" alt="Identidade visual da Fundação Bradesco" width="560" height="400" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Fundação Bradesco</h3>
+              <p>Educação financeira e formação complementar</p>
+              <span class="cert-actions"><span class="link-px">Visualizar certificado →</span></span>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </a>
+
+          <a class="cert cert-summary px" href="./Cursos/outrosCursos.html" data-reveal data-tilt style="--d: 4">
+            <div class="cert-thumb"><span class="cert-badge">2 CERTIFICADOS</span><img src="./images/cursos/sebrae.jpg" alt="Capa para cursos e certificações complementares" width="560" height="400" loading="lazy" decoding="async" /></div>
+            <div class="cert-info">
+              <h3>Outros Cursos</h3>
+              <p>Conhecimentos extras e formações complementares</p>
+              <span class="cert-actions"><span class="link-px">Visualizar certificados →</span></span>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </a>
+        </div>
       </div>
     </section>
 
