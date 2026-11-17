@@ -50,15 +50,15 @@ window.GN_DATA = {
 
     { id: 'p-techcampus', cat: 'Projetos', icon: 'rocket', name: 'TechCampus', status: 'doing', href: '#projetos',
       desc: 'Sistema web full stack para a AAPM escolar, em desenvolvimento.' },
-    { id: 'p-qualeaboa', cat: 'Projetos', icon: 'smartphone', name: 'Qual é a Boa?', status: 'doing', href: '#projetos',
-      desc: 'Aplicativo mobile de sorteio de opções, em desenvolvimento.' },
+    { id: 'p-qualeaboa', cat: 'Projetos', icon: 'smartphone', name: 'Qual é a Boa?', status: 'done', href: '#projetos',
+      desc: 'Aplicativo mobile de sorteio de opções, concluído e publicado.' },
     { id: 'p-capivarinha', cat: 'Projetos', icon: 'gamepad', name: 'Jogo da Capivarinha', status: 'done', href: '#projetos',
       desc: 'Jogo em Python com cliente e servidor, publicado no GitHub.' },
 
     { id: 't-node', cat: 'Tecnologias', icon: 'leaf', name: 'Back-end com Node.js', status: 'doing', href: '#habilidades',
       desc: 'Node.js, Express e SQLite em uso no TechCampus.' },
-    { id: 't-rn', cat: 'Tecnologias', icon: 'smartphone', name: 'Primeiros passos no mobile', status: 'doing', href: '#habilidades',
-      desc: 'Aprendendo React Native e Expo no app Qual é a Boa?.' },
+    { id: 't-rn', cat: 'Tecnologias', icon: 'smartphone', name: 'Desenvolvimento mobile com React Native e Expo', status: 'done', href: '#habilidades',
+      desc: 'React Native e Expo aplicados no desenvolvimento do app Qual é a Boa?, concluído.' },
     { id: 't-python', cat: 'Tecnologias', icon: 'scroll', name: 'Python em rede', status: 'done', href: '#habilidades',
       desc: 'Comunicação cliente/servidor com WebSockets e asyncio.' },
 
