@@ -16,22 +16,22 @@
   const $ = (s, r = document) => r.querySelector(s);
 
   /* ---------- Estado + persistência ---------- */
-  const DEFAULTS = { theme: 'dark', sound: true, music: true, effects: true, musicVol: 45, sfxVol: 70, immersive: false, boot: true };
+  const DEFAULTS = { theme: 'dark', sound: true, music: false, effects: true, musicVol: 45, sfxVol: 70, immersive: false, boot: true };
   const clampVol = (v, d) => (Number.isFinite(+v) ? Math.max(0, Math.min(100, Math.round(+v))) : d);
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch { saved = {}; }
   const state = {
     theme: saved.theme === 'light' ? 'light' : 'dark',
     sound: true,
-    music: true,
-    effects: false,
+    music: false,
+    effects: true,
     musicVol: clampVol(saved.musicVol ?? saved.volume, DEFAULTS.musicVol), // "volume" = chave antiga
     sfxVol: clampVol(saved.sfxVol, DEFAULTS.sfxVol),
     immersive: saved.immersive === true,
     boot: saved.boot !== false,
   };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* sem storage */ } };
-  // Preferência inicial do portfólio: trilha ligada, efeitos sonoros desligados.
+  // Preferência inicial do portfólio: trilha musical desligada, efeitos sonoros ligados.
   save();
   const listeners = new Set();
   const emit = (k) => listeners.forEach((fn) => { try { fn(k, state[k], state); } catch { /* ignora */ } });
