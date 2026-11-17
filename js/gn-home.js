@@ -167,11 +167,12 @@
     const CMDS = {
       help() {
         row([{ b: 'Comandos disponíveis' }]);
-        [['help', 'lista os comandos'], ['about', 'quem é Gustavo Nunes'], ['skills', 'habilidades e estado de cada uma'],
-          ['projects', 'projetos em destaque'], ['certificates', 'certificados por instituição (ex.: certificates senai)'],
-          ['contact', 'formas de contato'], ['journey', 'trajetória'], ['achievements', 'conquistas'],
-          ['theme', 'theme light | dark'], ['immersive', 'immersive on | off'], ['sound', 'sound on | off'], ['clear', 'limpa o terminal']]
-          .forEach(([c, d]) => row([{ em: c.padEnd(14, ' ') }, d], 'pre'));
+        [['PERFIL', ''], ['about', 'quem é Gustavo Nunes'], ['whoami', 'identifica o visitante'], ['journey', 'trajetória'], ['contact', 'formas de contato'],
+          ['TECNOLOGIA', ''], ['skills', 'habilidades por categoria'], ['stack', 'resumo das tecnologias'], ['projects', 'projetos em destaque'], ['certificates', 'certificados (ex.: certificates senai)'],
+          ['NAVEGAÇÃO', ''], ['home', 'volta ao início'], ['github', 'abre os repositórios'], ['terminal', 'informações deste terminal'],
+          ['PERSONALIZAÇÃO', ''], ['theme light|dark', 'altera o tema'], ['immersive on|off', 'modo imersivo'], ['music on|off', 'trilha musical'], ['effects on|off', 'efeitos sonoros'],
+          ['SISTEMA', ''], ['help', 'mostra esta ajuda'], ['clear', 'limpa a tela']]
+          .forEach(([c, d]) => { if (!d) row([{ b: c }]); else row([{ em: c.padEnd(18, ' ') }, d], 'pre'); });
       },
       about() {
         const p = $('.about-text p');
@@ -242,6 +243,24 @@
         if (v !== 'on' && v !== 'off') { row(`Sons: ${S().get('sound') ? 'on' : 'off'}. Use: sound on | off`); return; }
         S().set('sound', v === 'on'); row(`Sons ${v === 'on' ? 'ativados' : 'desativados'}.`);
       },
+      stack() {
+        row([{ b: 'GN · TECH STACK' }]);
+        [['Web', 'HTML · CSS · JavaScript · Tailwind CSS · Bootstrap'], ['Back-end', 'Node.js · Express · Python · Java'], ['Dados', 'SQLite · MySQL'], ['Mobile', 'React Native · Android Studio · Expo'], ['IoT', 'Arduino · ESP8266'], ['Ferramentas', 'Git · GitHub · VS Code · Figma · Vercel']].forEach(([k,v]) => row([{ em: k.padEnd(13, ' ') }, v], 'pre'));
+      },
+      music(arg) {
+        const v = (arg || '').toLowerCase();
+        if (v !== 'on' && v !== 'off') { row(`Música: ${S().get('music') ? 'on' : 'off'}. Use: music on | off`); return; }
+        S().set('sound', true); S().set('effects', false); S().set('music', v === 'on');
+        row(`Trilha musical ${v === 'on' ? 'ativada' : 'desativada'}; efeitos sonoros desligados.`);
+      },
+      effects(arg) {
+        const v = (arg || '').toLowerCase();
+        if (v !== 'on' && v !== 'off') { row(`Efeitos sonoros: ${S().get('effects') ? 'on' : 'off'}. Use: effects on | off`); return; }
+        S().set('effects', v === 'on'); row(`Efeitos sonoros ${v === 'on' ? 'ativados' : 'desativados'}.`);
+      },
+      home() { location.hash = 'home'; row('Voltando ao início.'); },
+      github() { row([{ a: 'github.com/GustavoNunes7', href: 'https://github.com/GustavoNunes7' }]); },
+      terminal() { row('GN.OS terminal · comandos interativos · histórico com ↑ e ↓ · autocomplete com Tab.'); },
       whoami() { row('visitante — bem-vindo ao portfólio do GN.'); },
       clear() { out.textContent = ''; },
     };
@@ -278,7 +297,7 @@
     });
     out.addEventListener('click', () => { if (finePointer) input.focus({ preventScroll: true }); });
 
-    ['help', 'about', 'skills', 'projects', 'certificates', 'contact', 'clear'].forEach((c) => {
+    ['help', 'about', 'skills', 'stack', 'projects', 'certificates', 'contact', 'github', 'clear'].forEach((c) => {
       const b = el('button', 'chip', c); b.type = 'button';
       b.addEventListener('click', () => { run(c); if (finePointer) input.focus({ preventScroll: true }); });
       chips.append(b);
