@@ -21,37 +21,39 @@
   };
 
 
-  /* ---------- Configurações globais: tema, música e efeitos ---------- */
+  /* ---------- Configurações globais: áudio ambiente e tema ---------- */
   let audioScrollEffect=null;
   function setupAudio(){
     const root=$('#gameSettings'),trigger=$('#settingsTrigger'),panel=$('#settingsPanel'),theme=$('#themeToggle'),music=$('#musicToggle'),effects=$('#effectsToggle'),volume=$('#audioVolume');
     if(!root||!trigger||!panel||!theme||!music||!effects||!volume)return;
     let saved={};try{saved=JSON.parse(localStorage.getItem('gn-game-settings')||'{}')||{};}catch{}
-    let ctx=null,master=null,timer=0,step=0,ready=false,lastFx=0;
+    let ctx=null,master=null,timer=0,step=0,ready=false;
     let light=saved.theme==='light',musicOn=saved.music!==false,effectsOn=saved.effects!==false;
-    volume.value=String(Number.isFinite(saved.volume)?Math.max(0,Math.min(100,saved.volume)):72);
-    const melody=[523.25,659.25,783.99,1046.5,783.99,659.25,587.33,698.46,880,1174.66,1046.5,880,783.99,659.25,587.33,783.99],bass=[130.81,146.83,164.81,196],chords=[[261.63,329.63,392],[293.66,369.99,440],[329.63,392,493.88],[196,246.94,293.66]];
+    volume.value=String(Number.isFinite(saved.volume)?Math.max(0,Math.min(100,saved.volume)):28);
+    const notes=[261.63,329.63,392,329.63,293.66,349.23,440,349.23,261.63,329.63,392,493.88,440,392,329.63,293.66];
     function save(){try{localStorage.setItem('gn-game-settings',JSON.stringify({theme:light?'light':'dark',music:musicOn,effects:effectsOn,volume:+volume.value}));}catch{}}
-    function audio(){if(ready&&ctx?.state==='running')return Promise.resolve();const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return Promise.resolve();try{if(!ctx){ctx=new AC();master=ctx.createGain();master.gain.value=+volume.value/100;master.connect(ctx.destination);}return ctx.resume().then(()=>{ready=ctx.state==='running';if(ready&&musicOn)startMusic();}).catch(()=>{});}catch{return Promise.resolve();}}
-    function tone(freq,d=.12,w='square',v=.16){if(!ctx||!master||ctx.state!=='running')return;const o=ctx.createOscillator(),g=ctx.createGain();o.type=w;o.frequency.setValueAtTime(freq,ctx.currentTime);g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(v,ctx.currentTime+.012);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+d);o.connect(g);g.connect(master);o.start();o.stop(ctx.currentTime+d+.03);}
-    function sweep(f,t,d=.18,v=.18,w='sawtooth'){if(!ctx||!master||ctx.state!=='running')return;const o=ctx.createOscillator(),g=ctx.createGain(),n=ctx.currentTime;o.type=w;o.frequency.setValueAtTime(f,n);o.frequency.exponentialRampToValueAtTime(t,n+d);g.gain.setValueAtTime(.0001,n);g.gain.exponentialRampToValueAtTime(v,n+.015);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.connect(g);g.connect(master);o.start();o.stop(n+d+.03);}
-    function startMusic(){if(timer||!musicOn)return;timer=setInterval(()=>{if(!musicOn||!ctx||ctx.state!=='running')return;let n=step%melody.length,ch=chords[Math.floor(step/4)%4];tone(melody[n],.16,'square',.17);if(step%2===0)tone(ch[(step/2)%3],.22,'triangle',.09);if(step%4===0)tone(bass[Math.floor(step/4)%4],.28,'sawtooth',.12);step++;},190);}
+    function audio(){if(ready&&ctx?.state==='running')return Promise.resolve();const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return Promise.resolve();try{if(!ctx){ctx=new AC();master=ctx.createGain();master.gain.value=(+volume.value/100)*.22;master.connect(ctx.destination);}return ctx.resume().then(()=>{ready=ctx.state==='running';if(ready&&musicOn)startMusic();}).catch(()=>{});}catch{return Promise.resolve();}}
+    function note(freq,d=.8,w='sine',level=.035){if(!ctx||!master||ctx.state!=='running')return;const o=ctx.createOscillator(),g=ctx.createGain(),n=ctx.currentTime;o.type=w;o.frequency.setValueAtTime(freq,n);g.gain.setValueAtTime(.0001,n);g.gain.linearRampToValueAtTime(level,n+.2);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.connect(g);g.connect(master);o.start(n);o.stop(n+d+.03);}
+    function startMusic(){if(timer||!musicOn)return;timer=setInterval(()=>{if(!musicOn||!ctx||ctx.state!=='running')return;const n=step%notes.length;note(notes[n],1.1,'sine',.035);if(step%4===0)note(notes[n]/2,1.4,'triangle',.018);step++;},850);}
     function stopMusic(){clearInterval(timer);timer=0;}
     function sw(el,on){el.setAttribute('aria-checked',String(on));el.textContent=on?'ON':'OFF';el.classList.toggle('is-on',on);}
     function apply(){document.documentElement.dataset.theme=light?'light':'dark';theme.textContent=light?'MODO CLARO':'MODO ESCURO';theme.setAttribute('aria-pressed',String(light));sw(music,musicOn);sw(effects,effectsOn);}
-    function fx(kind){if(!effectsOn||!ready)return;if(kind==='down'){sweep(520,170,.2,.19);tone(392,.08,'triangle',.1);}else if(kind==='up'){sweep(170,700,.2,.18,'triangle');tone(784,.08,'square',.09);}else if(kind==='nav'){tone(880,.07,'square',.18);tone(1174,.1,'triangle',.12);}else if(kind==='open'){sweep(300,950,.19,.2,'triangle');}else if(kind==='close'){sweep(700,240,.15,.15,'triangle');}else{tone(660,.06,'square',.16);tone(990,.08,'triangle',.1);}}
-    audioScrollEffect=dir=>{if(!effectsOn||!ready||performance.now()-lastFx<420)return;lastFx=performance.now();fx(dir==='down'?'down':'up');};
-    apply();audio();
-    const unlock=()=>audio();document.addEventListener('pointerdown',unlock,{once:true,capture:true});document.addEventListener('keydown',unlock,{once:true,capture:true});
-    trigger.addEventListener('click',()=>{let open=panel.hidden;panel.hidden=!open;trigger.setAttribute('aria-expanded',String(open));fx(open?'open':'close');});
-    $('#settingsClose')?.addEventListener('click',()=>{panel.hidden=true;trigger.setAttribute('aria-expanded','false');fx('close');});
+    function softFx(kind){if(!effectsOn||!ready)return;if(kind==='nav')note(587.33,.16,'sine',.025);else if(kind==='open'){note(440,.2,'sine',.025);note(554.37,.24,'sine',.018);}else if(kind==='close')note(392,.18,'sine',.02);else note(493.88,.12,'sine',.018);}
+    audioScrollEffect=null;
+    apply();
+    // Autoplay audível é bloqueado pelos navegadores até uma interação do usuário.
+    // Qualquer toque, clique, tecla ou rolagem libera a música; não é preciso clicar no botão.
+    const unlock=()=>{if(musicOn)audio();};
+    ['pointerdown','keydown','touchstart','wheel'].forEach(type=>document.addEventListener(type,unlock,{once:true,capture:true,passive:true}));
+    trigger.addEventListener('click',()=>{const open=panel.hidden;panel.hidden=!open;trigger.setAttribute('aria-expanded',String(open));softFx(open?'open':'close');});
+    $('#settingsClose')?.addEventListener('click',()=>{panel.hidden=true;trigger.setAttribute('aria-expanded','false');softFx('close');});
     document.addEventListener('click',e=>{if(!root.contains(e.target)&&!panel.hidden){panel.hidden=true;trigger.setAttribute('aria-expanded','false');}});
-    theme.addEventListener('click',()=>{light=!light;apply();save();fx('confirm');});
-    music.addEventListener('click',async()=>{musicOn=!musicOn;if(musicOn){await audio();startMusic();}else stopMusic();sw(music,musicOn);save();fx('confirm');});
-    effects.addEventListener('click',()=>{effectsOn=!effectsOn;sw(effects,effectsOn);save();if(effectsOn)fx('confirm');});
-    volume.addEventListener('input',()=>{if(master&&ctx)master.gain.setTargetAtTime(+volume.value/100,ctx.currentTime,.06);save();});
-    document.addEventListener('click',e=>{if(!ready||root.contains(e.target))return;let t=e.target.closest('a,button');if(!t||t.matches('.copy-btn'))return;fx(t.matches('.nav-link')?'nav':'click');},true);
-    document.addEventListener('visibilitychange',()=>{if(document.hidden)stopMusic();else if(musicOn)audio();});
+    theme.addEventListener('click',()=>{light=!light;apply();save();softFx('confirm');});
+    music.addEventListener('click',async()=>{musicOn=!musicOn;if(musicOn){await audio();startMusic();}else stopMusic();sw(music,musicOn);save();softFx('confirm');});
+    effects.addEventListener('click',()=>{effectsOn=!effectsOn;sw(effects,effectsOn);save();if(effectsOn)softFx('confirm');});
+    volume.addEventListener('input',()=>{if(master&&ctx)master.gain.setTargetAtTime((+volume.value/100)*.22,ctx.currentTime,.12);save();});
+    document.addEventListener('click',e=>{if(!ready||root.contains(e.target))return;const t=e.target.closest('a,button');if(!t||t.matches('.copy-btn'))return;softFx(t.matches('.nav-link')?'nav':'click');},true);
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)stopMusic();else if(musicOn&&ready)audio();});
   }
 
   /* ---------- Ícones pixel ---------- */
