@@ -36,7 +36,7 @@
     function note(freq,d=.8,w='sine',level=.035){if(!ctx||!master||ctx.state!=='running')return;const o=ctx.createOscillator(),g=ctx.createGain(),n=ctx.currentTime;o.type=w;o.frequency.setValueAtTime(freq,n);g.gain.setValueAtTime(.0001,n);g.gain.linearRampToValueAtTime(level,n+.2);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.connect(g);g.connect(master);o.start(n);o.stop(n+d+.03);}
     function startMusic(){if(timer||!musicOn)return;timer=setInterval(()=>{if(!musicOn||!ctx||ctx.state!=='running')return;const n=step%notes.length;note(notes[n],1.1,'sine',.035);if(step%4===0)note(notes[n]/2,1.4,'triangle',.018);step++;},850);}
     function stopMusic(){clearInterval(timer);timer=0;}
-    function sw(el,on){el.setAttribute('aria-checked',String(on));el.textContent=on?'ON':'OFF';el.classList.toggle('is-on',on);}
+    function sw(el,on){el.setAttribute('aria-checked',String(on));const isMusic=el===music;el.textContent=isMusic?(on?'♫':'♪'):(on?'ON':'OFF');if(isMusic){el.setAttribute('aria-label',on?'Desativar música':'Ativar música');el.title=on?'Música ativada':'Música desativada';}el.classList.toggle('is-on',on);}
     function apply(){document.documentElement.dataset.theme=light?'light':'dark';theme.textContent=light?'MODO CLARO':'MODO ESCURO';theme.setAttribute('aria-pressed',String(light));sw(music,musicOn);sw(effects,effectsOn);}
     function softFx(kind){if(!effectsOn||!ready)return;if(kind==='nav')note(587.33,.16,'sine',.025);else if(kind==='open'){note(440,.2,'sine',.025);note(554.37,.24,'sine',.018);}else if(kind==='close')note(392,.18,'sine',.02);else note(493.88,.12,'sine',.018);}
     audioScrollEffect=null;
@@ -53,7 +53,8 @@
     effects.addEventListener('click',()=>{effectsOn=!effectsOn;sw(effects,effectsOn);save();if(effectsOn)softFx('confirm');});
     volume.addEventListener('input',()=>{if(master&&ctx)master.gain.setTargetAtTime((+volume.value/100)*.22,ctx.currentTime,.12);save();});
     document.addEventListener('click',e=>{if(!ready||root.contains(e.target))return;const t=e.target.closest('a,button');if(!t||t.matches('.copy-btn'))return;softFx(t.matches('.nav-link')?'nav':'click');},true);
-    document.addEventListener('visibilitychange',()=>{if(document.hidden)stopMusic();else if(musicOn&&ready)audio();});
+    // A música não é interrompida quando esta aba fica em segundo plano.
+    // As páginas de certificados abrem em nova aba para preservar o player original.
   }
 
   /* ---------- Ícones pixel ---------- */
