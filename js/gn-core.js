@@ -145,7 +145,7 @@
     /** Deve ser chamado de dentro de um gesto do usuário (clique, toque, tecla). */
     function unlock() {
       if (!build()) return Promise.resolve(false);
-      if (ctx.state === 'running') { unlocked = true; return Promise.resolve(true); }
+      if (ctx.state === 'running') { unlocked = true; sync(); return Promise.resolve(true); }
       return ctx.resume().then(() => { unlocked = ctx.state === 'running'; sync(); return unlocked; }).catch(() => false);
     }
 
@@ -170,7 +170,7 @@
     }
 
     // Libera o áudio na primeira interação "normal" (política dos navegadores).
-    const gestures = ['pointerup', 'click', 'keydown', 'touchend'];
+    const gestures = ['pointerdown', 'pointerup', 'click', 'keydown', 'touchstart', 'touchend'];
     const onGesture = () => {
       unlock().then((ok) => { if (ok) gestures.forEach((g) => document.removeEventListener(g, onGesture, true)); });
     };
