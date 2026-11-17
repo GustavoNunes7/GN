@@ -250,8 +250,8 @@
       music(arg) {
         const v = (arg || '').toLowerCase();
         if (v !== 'on' && v !== 'off') { row(`Música: ${S().get('music') ? 'on' : 'off'}. Use: music on | off`); return; }
-        S().set('sound', true); S().set('effects', false); S().set('music', v === 'on');
-        row(`Trilha musical ${v === 'on' ? 'ativada' : 'desativada'}; efeitos sonoros desligados.`);
+        S().set('music', v === 'on');
+        row(`Trilha musical ${v === 'on' ? 'ativada' : 'desativada'}; efeitos sonoros mantidos ${S().get('effects') ? 'ligados' : 'desligados'}.`);
       },
       effects(arg) {
         const v = (arg || '').toLowerCase();
