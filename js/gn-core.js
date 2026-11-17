@@ -22,7 +22,7 @@
   try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch { saved = {}; }
   const state = {
     theme: saved.theme === 'light' ? 'light' : 'dark',
-    sound: true,
+    sound: saved.sound !== false,
     music: false,
     effects: true,
     musicVol: clampVol(saved.musicVol ?? saved.volume, DEFAULTS.musicVol), // "volume" = chave antiga
@@ -31,7 +31,8 @@
     boot: saved.boot !== false,
   };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* sem storage */ } };
-  // Preferência inicial do portfólio: trilha musical desligada, efeitos sonoros ligados.
+  // Estado inicial fixo: música desligada e efeitos sonoros ligados.
+  // Mantém as preferências de áudio coerentes também ao abrir as configurações.
   save();
   const listeners = new Set();
   const emit = (k) => listeners.forEach((fn) => { try { fn(k, state[k], state); } catch { /* ignora */ } });
@@ -282,7 +283,9 @@
       // fecha o menu mobile, se aberto
       const burger = $('.hamburger-btn.active'); if (burger) burger.click();
     }
-    Audio.sfx(open ? 'open' : 'close');
+    // Abrir/fechar configurações não deve iniciar nem alterar a trilha musical.
+    // O som de interface é reproduzido apenas se os efeitos estiverem ativos.
+    if (state.sound && state.effects) Audio.sfx(open ? 'open' : 'close');
   }
 
   function wirePanel() {
@@ -293,9 +296,13 @@
     const sw = (id, key) => q(id)?.addEventListener('click', () => {
       const next = !state[key];
       set(key, next);
-      if (key === 'sound' && next) Audio.unlock().then(() => Audio.sfx('on'));
-      else if (next) Audio.sfx('on'); else if (key !== 'sound' && key !== 'effects') Audio.sfx('off');
-      if (key === 'effects' && !next) { /* silencioso ao desligar */ }
+      if (key === 'sound' && next) Audio.unlock().then(() => { if (state.effects) Audio.sfx('on'); });
+      else if (key === 'effects' && next) Audio.sfx('on');
+      else if (key === 'music') {
+        // O controle da música nunca liga/desliga os efeitos sonoros.
+        if (next) Audio.unlock();
+      } else if (key === 'immersive' && next && state.effects) Audio.sfx('on');
+      if (key === 'effects' && !next) { /* desligamento silencioso */ }
     });
     sw('soundToggle', 'sound'); sw('musicToggle', 'music'); sw('effectsToggle', 'effects');
     sw('immersiveToggle', 'immersive'); sw('bootToggle', 'boot');
