@@ -22,7 +22,7 @@
   try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch { saved = {}; }
   const state = {
     theme: saved.theme === 'light' ? 'light' : 'dark',
-    sound: saved.sound !== false,
+    sound: true,
     music: false,
     effects: true,
     musicVol: clampVol(saved.musicVol ?? saved.volume, DEFAULTS.musicVol), // "volume" = chave antiga
@@ -31,7 +31,7 @@
     boot: saved.boot !== false,
   };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* sem storage */ } };
-  // Estado inicial fixo: música desligada e efeitos sonoros ligados.
+  // Estado inicial garantido: música OFF e efeitos sonoros ON.
   // Mantém as preferências de áudio coerentes também ao abrir as configurações.
   save();
   const listeners = new Set();
@@ -283,9 +283,8 @@
       // fecha o menu mobile, se aberto
       const burger = $('.hamburger-btn.active'); if (burger) burger.click();
     }
-    // Abrir/fechar configurações não deve iniciar nem alterar a trilha musical.
-    // O som de interface é reproduzido apenas se os efeitos estiverem ativos.
-    if (state.sound && state.effects) Audio.sfx(open ? 'open' : 'close');
+    // Abrir ou fechar configurações é uma ação silenciosa.
+    // Nenhum canal de áudio deve iniciar ao tocar na engrenagem.
   }
 
   function wirePanel() {
