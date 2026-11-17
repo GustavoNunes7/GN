@@ -22,15 +22,17 @@
   try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch { saved = {}; }
   const state = {
     theme: saved.theme === 'light' ? 'light' : 'dark',
-    sound: saved.sound !== false,
-    music: saved.music !== false,
-    effects: saved.effects !== false,
+    sound: true,
+    music: true,
+    effects: false,
     musicVol: clampVol(saved.musicVol ?? saved.volume, DEFAULTS.musicVol), // "volume" = chave antiga
     sfxVol: clampVol(saved.sfxVol, DEFAULTS.sfxVol),
     immersive: saved.immersive === true,
     boot: saved.boot !== false,
   };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* sem storage */ } };
+  // Preferência inicial do portfólio: trilha ligada, efeitos sonoros desligados.
+  save();
   const listeners = new Set();
   const emit = (k) => listeners.forEach((fn) => { try { fn(k, state[k], state); } catch { /* ignora */ } });
 
