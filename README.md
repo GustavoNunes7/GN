@@ -16,6 +16,15 @@ Portfólio de **Gustavo Nunes — Desenvolvedor de Sistemas em formação**, com
 - **Sobre** como *player profile*; **Skill Tree** por categoria (sem níveis ou porcentagens inventados); **Projetos** com card principal em destaque e hover 3D; **Trajetória** em timeline que "enche" ao rolar; **Certificados** com miniaturas e filtro por instituição; **Contato** em formato de terminal com botões de copiar.
 - Navbar com indicador de seção, barra de progresso, menu mobile, botão de voltar ao topo, cursor pixel (só mouse).
 
+## 🎮 Novidades (v3)
+
+- **Engrenagem na navbar** com tema claro/escuro, sons (geral), música e efeitos com volumes independentes, modo imersivo e tela de inicialização opcional. Tudo salvo em `localStorage` (`gn-game-settings`). O áudio só começa após a primeira interação e nunca toca durante a rolagem.
+- **Skill Tree** com estados (`data-state="learned | dev | next"` em cada nó de `index.html`) e painel de detalhes.
+- **Conquistas**: edite `js/gn-data.js` (`achievements`) — só inclua fatos comprovados.
+- **Terminal** (`help, about, skills, projects, certificates, contact, journey, achievements, theme, immersive, sound, clear`).
+- **Easter eggs** (logo GN ×5, código clássico, 3 moedas escondidas).
+- **Projetos**: três cards principais com objetivo, funcionalidades, stack, status (`data-status`) e GitHub.
+
 ## ⚡ Desempenho e acessibilidade
 
 - O Three.js (`js/hero3d.js`) só é baixado na home, após o boot e em *idle*. Antes disso (e em dispositivos fracos, *save-data*, 2G ou sem WebGL) aparece a **arte 2D em pixel art** como alternativa.
@@ -29,7 +38,11 @@ Portfólio de **Gustavo Nunes — Desenvolvedor de Sistemas em formação**, com
 index.html            Página principal
 styles.css            Design system (tokens, componentes, seções, responsivo)
 script.js             Comportamento (JS puro) — todas as páginas
-páginaCursos/         Páginas de certificados (SENAI, SESI, SEBRAE, Bradesco, Extras)
+Cursos/               Páginas de certificados (SENAI, SESI, SEBRAE, Bradesco, Extras)
+css/gn-extra.css      Configurações, tema claro, Skill Tree, conquistas, terminal, modo imersivo
+js/gn-core.js         Configurações + áudio (Web Audio) + tema + modo imersivo (todas as páginas)
+js/gn-home.js         Skill Tree, conquistas, terminal e easter eggs (home)
+js/gn-data.js         Dados reais usados pelo terminal e pelas conquistas
 src/                  Fontes do pixel art e da cena 3D  ← edite aqui
 js/                   Arquivos gerados a partir de src/ (publicados no Pages)
 tools/build.mjs       Build (esbuild)
@@ -42,7 +55,7 @@ O site é 100% estático (funciona no GitHub Pages). Só é necessário Node se 
 
 ```bash
 npm install
-npm run build        # gera js/pixel-art.js e js/hero3d.js
+npm run build        # gera js/pixel-art.js e js/hero3d.js (gn-core/gn-home/gn-data são JS puro, sem build)
 python3 -m http.server 8000   # ou qualquer servidor estático
 ```
 

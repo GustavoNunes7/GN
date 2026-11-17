@@ -9,6 +9,7 @@
     content="Portfólio de Gustavo Nunes, Desenvolvedor de Sistemas em formação. Projetos, habilidades, trajetória e certificados — em uma experiência em pixel art e 3D." />
   <meta name="author" content="Gustavo Nunes" />
   <meta name="theme-color" content="#05070B" />
+  <meta name="color-scheme" content="dark light" />
   <meta property="og:title" content="Gustavo Nunes | Desenvolvedor de Sistemas" />
   <meta property="og:description" content="Portfólio profissional e projetos de desenvolvimento de sistemas." />
   <meta property="og:type" content="website" />
@@ -16,24 +17,36 @@
   <link rel="icon" href="./images/Logo.jpg" />
   <link rel="preload" href="fonts/pixelify-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20261117-1" />
-  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="styles.css?v=20261117-2" />
+    <link rel="stylesheet" href="css/gn-extra.css?v=20261117-2" />
+    <script>
+    /* aplica tema/modo salvos antes da primeira pintura (evita "piscar") */
+    (function () {
+      var d = document.documentElement; d.classList.add('js');
+      try {
+        var s = JSON.parse(localStorage.getItem('gn-game-settings') || '{}') || {};
+        if (s.theme === 'light') d.setAttribute('data-theme', 'light');
+        if (s.immersive === true) d.setAttribute('data-immersive', 'on');
+      } catch (e) { /* ignora */ }
+    })();
+  </script>
 </head>
 
 <body data-page="home">
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
   <!-- Tela de boot -->
-  <div class="boot" id="boot" role="status" aria-live="polite">
+  <div class="boot" id="boot" role="status" aria-live="polite" aria-label="Carregando o portfólio">
     <div class="boot-box">
+      <div class="boot-mark" aria-hidden="true"><span>G</span><span>N</span></div>
       <div class="boot-logo">Gustavo Nunes</div>
       <div class="boot-log" id="bootLog">&gt; iniciando…</div>
       <div class="boot-bar"><i id="bootBar"></i></div>
+      <div class="boot-pct" id="bootPct" aria-hidden="true">0%</div>
       <button class="boot-skip" id="bootSkip" type="button">[ PULAR ]</button>
     </div>
   </div>
-
-  <div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
   <div class="bg-grid" aria-hidden="true"></div>
   <div class="scanlines" aria-hidden="true"></div>
   <div class="px-cursor" id="pxCursor" aria-hidden="true"></div>
@@ -56,9 +69,15 @@
         </ul>
       </nav>
 
-      <button class="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
-        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
-      </button>
+      <div class="nav-tools">
+        <a class="nav-icon-btn" href="#terminal" aria-label="Abrir o terminal interativo" title="Terminal"><span class="pxi" data-px="terminal"></span></a>
+        <div class="game-settings" id="gameSettings">
+          <button class="settings-trigger" id="settingsTrigger" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-haspopup="dialog" aria-label="Abrir configurações" title="Configurações"><span class="pxi" data-px="gear"></span></button>
+        </div>
+        <button class="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+          <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+        </button>
+      </div>
     </div>
     <div class="scroll-progress" aria-hidden="true">
       <div class="scroll-progress-bar" id="progressBar"></div>
@@ -212,13 +231,14 @@
         <header class="sec-head" data-reveal>
           <span class="sec-idx">// 02 · SKILL_TREE.dat</span>
           <h2 class="sec-title" id="t-skills">Skill <span>Tree</span></h2>
-          <p class="sec-sub">As tecnologias que estudo e uso nos meus projetos, organizadas por área.</p>
+          <p class="sec-sub">As tecnologias que estudo e uso nos meus projetos, organizadas por área. Selecione uma habilidade para ver os detalhes.</p>
         </header>
 
-        <div class="tree">
+        <div class="tree" id="skillTree">
           <div class="tree-root px green" data-reveal="zoom"><span class="pxi" data-px="user"></span>
             <div><b>GN</b><small>SYSTEM DEVELOPER</small></div>
           </div>
+
 
           <div class="tree-branches">
             <article class="branch" data-reveal style="--d: 1">
@@ -227,9 +247,9 @@
                 <p>interface &amp; experiência</p>
               </header>
               <ul class="skills">
-                <li class="skill px"><span class="pxi" data-px="code"></span>HTML</li>
-                <li class="skill px"><span class="pxi" data-px="palette"></span>CSS</li>
-                <li class="skill px"><span class="pxi" data-px="bolt"></span>JavaScript</li>
+                <li><button type="button" class="skill skill-node px" data-state="learned" data-cat="Front-end" data-desc="Estrutura semântica das páginas, usada neste portfólio e nas interfaces do TechCampus." aria-pressed="false"><span class="pxi" data-px="code"></span><span class="skill-name">HTML</span></button></li>
+                <li><button type="button" class="skill skill-node px" data-state="learned" data-cat="Front-end" data-desc="Layout, responsividade e identidade visual das interfaces, como neste portfólio." aria-pressed="false"><span class="pxi" data-px="palette"></span><span class="skill-name">CSS</span></button></li>
+                <li><button type="button" class="skill skill-node px" data-state="learned" data-cat="Front-end" data-desc="Interatividade das páginas e base dos meus projetos: interfaces web, Node.js e o app Qual é a Boa?." aria-pressed="false"><span class="pxi" data-px="bolt"></span><span class="skill-name">JavaScript</span></button></li>
               </ul>
             </article>
 
@@ -239,38 +259,66 @@
                 <p>lógica &amp; servidores</p>
               </header>
               <ul class="skills">
-                <li class="skill px green"><span class="pxi" data-px="scroll"></span>Python</li>
-                <li class="skill px green"><span class="pxi" data-px="gear"></span>Java</li>
-                <li class="skill px green"><span class="pxi" data-px="leaf"></span>Node.js</li>
+                <li><button type="button" class="skill skill-node px green" data-state="learned" data-cat="Back-end" data-desc="Usado no Jogo da Capivarinha, com cliente e servidor se comunicando por WebSockets e asyncio." aria-pressed="false"><span class="pxi" data-px="scroll"></span><span class="skill-name">Python</span></button></li>
+                <li><button type="button" class="skill skill-node px green" data-state="dev" data-cat="Back-end" data-desc="Linguagem que faz parte dos meus estudos na área de desenvolvimento de sistemas." aria-pressed="false"><span class="pxi" data-px="gear"></span><span class="skill-name">Java</span></button></li>
+                <li><button type="button" class="skill skill-node px green" data-state="learned" data-cat="Back-end" data-desc="Back-end do TechCampus, construído com Node.js, Express e SQLite." aria-pressed="false"><span class="pxi" data-px="leaf"></span><span class="skill-name">Node.js</span></button></li>
               </ul>
             </article>
 
             <article class="branch" data-reveal style="--d: 3">
               <header class="branch-head px"><span class="pxi" data-px="db"></span>
-                <h3>Banco de Dados e Infraestrutura</h3>
-                <p>dados &amp; conectividade</p>
+                <h3>Banco de Dados</h3>
+                <p>dados &amp; persistência</p>
               </header>
               <ul class="skills">
-                <li class="skill px"><span class="pxi" data-px="db"></span>SQLite</li>
-                <li class="skill px"><span class="pxi" data-px="chart"></span>MySQL</li>
-                <li class="skill px"><span class="pxi" data-px="globe"></span>Arquitetura de Redes</li>
-                <li class="skill px"><span class="pxi" data-px="chip"></span>IoT</li>
+                <li><button type="button" class="skill skill-node px" data-state="learned" data-cat="Banco de dados" data-desc="Banco de dados utilizado no TechCampus." aria-pressed="false"><span class="pxi" data-px="db"></span><span class="skill-name">SQLite</span></button></li>
+                <li><button type="button" class="skill skill-node px" data-state="dev" data-cat="Banco de dados" data-desc="Banco de dados relacional que estou estudando." aria-pressed="false"><span class="pxi" data-px="chart"></span><span class="skill-name">MySQL</span></button></li>
               </ul>
             </article>
 
             <article class="branch" data-reveal style="--d: 4">
+              <header class="branch-head px green"><span class="pxi" data-px="smartphone"></span>
+                <h3>Mobile</h3>
+                <p>apps &amp; dispositivos</p>
+              </header>
+              <ul class="skills">
+                <li><button type="button" class="skill skill-node px green" data-state="dev" data-cat="Mobile Development" data-desc="Estou aprendendo desenvolvimento mobile com React Native e Expo. Aplico o estudo no app Qual é a Boa?, que ainda está em desenvolvimento." aria-pressed="false"><span class="pxi" data-px="smartphone"></span><span class="skill-name">React Native</span></button></li>
+              </ul>
+            </article>
+
+            <article class="branch" data-reveal style="--d: 5">
+              <header class="branch-head px"><span class="pxi" data-px="chip"></span>
+                <h3>IoT e Hardware</h3>
+                <p>conectividade &amp; dispositivos</p>
+              </header>
+              <ul class="skills">
+                <li><button type="button" class="skill skill-node px" data-state="dev" data-cat="IoT e hardware" data-desc="Explorando IoT nos recursos de integração do TechCampus." aria-pressed="false"><span class="pxi" data-px="chip"></span><span class="skill-name">IoT</span></button></li>
+                <li><button type="button" class="skill skill-node px" data-state="dev" data-cat="IoT e hardware" data-desc="Área de estudo da formação técnica, essencial para conectar sistemas e dispositivos." aria-pressed="false"><span class="pxi" data-px="globe"></span><span class="skill-name">Arquitetura de Redes</span></button></li>
+              </ul>
+            </article>
+
+            <article class="branch" data-reveal style="--d: 6">
               <header class="branch-head px green"><span class="pxi" data-px="wrench"></span>
                 <h3>Ferramentas</h3>
                 <p>fluxo de trabalho</p>
               </header>
               <ul class="skills">
-                <li class="skill px green"><span class="pxi" data-px="cycle"></span>Git</li>
-                <li class="skill px green"><span class="pxi" data-px="user"></span>GitHub</li>
-                <li class="skill px green"><span class="pxi" data-px="code"></span>VS Code</li>
-                <li class="skill px green"><span class="pxi" data-px="palette"></span>Figma</li>
+                <li><button type="button" class="skill skill-node px green" data-state="learned" data-cat="Ferramentas e tecnologias" data-desc="Controle de versão dos meus projetos." aria-pressed="false"><span class="pxi" data-px="cycle"></span><span class="skill-name">Git</span></button></li>
+                <li><button type="button" class="skill skill-node px green" data-state="learned" data-cat="Ferramentas e tecnologias" data-desc="Onde publico meus repositórios: TechCampus, Qual é a Boa? e Jogo da Capivarinha." aria-pressed="false"><span class="pxi" data-px="user"></span><span class="skill-name">GitHub</span></button></li>
+                <li><button type="button" class="skill skill-node px green" data-state="learned" data-cat="Ferramentas e tecnologias" data-desc="Editor de código que uso no desenvolvimento." aria-pressed="false"><span class="pxi" data-px="code"></span><span class="skill-name">VS Code</span></button></li>
+                <li><button type="button" class="skill skill-node px green" data-state="dev" data-cat="Ferramentas e tecnologias" data-desc="Ferramenta de design de interfaces que faz parte das minhas tecnologias de estudo." aria-pressed="false"><span class="pxi" data-px="palette"></span><span class="skill-name">Figma</span></button></li>
               </ul>
             </article>
           </div>
+
+          <aside class="skill-detail px" id="skillDetail" aria-live="polite" aria-label="Detalhes da habilidade selecionada">
+            <span class="pxi skill-detail-icon" data-px="sparkle"></span>
+            <div class="skill-detail-body">
+              <small class="skill-detail-cat">// SELECIONE UM NÓ</small>
+              <h3 class="skill-detail-name">Escolha uma habilidade</h3>
+              <p class="skill-detail-desc">Clique (ou toque) em qualquer tecnologia da árvore para ver como ela aparece na minha jornada.</p>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -281,21 +329,33 @@
         <header class="sec-head" data-reveal>
           <span class="sec-idx">// 03 · QUESTS.log</span>
           <h2 class="sec-title" id="t-proj">Projetos em <span>Destaque</span></h2>
-          <p class="sec-sub">Projetos que representam minha evolução em desenvolvimento web, mobile e Python.</p>
+          <p class="sec-sub">Os três projetos que melhor representam minha evolução em desenvolvimento web, mobile e Python.</p>
         </header>
 
         <div class="projetos-wrapper">
-          <article class="projeto-card featured px green" data-reveal data-tilt>
+          <article class="projeto-card featured px green" data-project="TechCampus" data-status="dev" data-reveal data-tilt>
             <div class="projeto-preview project-cover">
-              <span class="featured-flag">PROJETO PRINCIPAL</span>
-              <img src="https://raw.githubusercontent.com/GustavoNunes7/TechCampus/main/public/landing/images/Imagem_tela_de_inicio.png"
-                alt="Tela inicial do sistema TechCampus" width="1200" height="675" loading="lazy" decoding="async" />
+              <span class="featured-flag">PROJETO PRINCIPAL · 01</span>
+              <img src="./images/projects/techcampus.jpg"
+                alt="Tela inicial do sistema TechCampus" width="1200" height="520" loading="lazy" decoding="async" />
               <span class="preview-tag">SISTEMA WEB · FULL STACK</span>
             </div>
             <div class="projeto-info">
-              <span class="status-chip"><i></i>PROJETO EM DESENVOLVIMENTO</span>
+              <span class="status-chip" data-status="dev"><i></i>EM DESENVOLVIMENTO</span>
               <h3>TechCampus</h3>
               <p>Sistema web para gestão da AAPM escolar, reunindo área do aluno, administração, loja, pedidos e recursos de integração com IoT.</p>
+              <dl class="proj-facts">
+                <div><dt>Objetivo</dt><dd>Centralizar em um único sistema web a gestão da AAPM (Associação de Alunos, Ex-alunos, Pais e Mestres).</dd></div>
+                <div><dt>Principais funcionalidades</dt>
+                  <dd><ul class="proj-features">
+                    <li>Login e área do aluno</li>
+                    <li>Painel administrativo</li>
+                    <li>Loja, checkout e pedidos</li>
+                    <li>Pagamentos e controle financeiro</li>
+                    <li>Avisos, calendário e notificações</li>
+                    <li>Retirada de pedidos com integração IoT</li>
+                  </ul></dd></div>
+              </dl>
               <div class="tech-tags"><span>Node.js</span><span>Express</span><span>SQLite</span><span>JavaScript</span></div>
               <div class="projeto-links">
                 <a href="https://github.com/GustavoNunes7/TechCampus" class="btn btn-ghost" target="_blank"
@@ -305,43 +365,71 @@
             <span class="glare" aria-hidden="true"></span>
           </article>
 
-          <div class="projetos-grid">
-            <article class="projeto-card normal px" data-reveal data-tilt>
-              <div class="projeto-preview project-cover">
-                <img src="./images/projects/qual-e-a-boa.svg" alt="Capa ilustrativa do aplicativo Qual é a Boa?" width="1200" height="675" loading="lazy" decoding="async" />
-                <span class="preview-tag">APLICATIVO MOBILE</span>
+          <article class="projeto-card featured reverse px" data-project="Qual é a Boa?" data-status="dev" data-reveal data-tilt>
+            <div class="projeto-preview project-cover">
+              <span class="featured-flag blue">PROJETO PRINCIPAL · 02</span>
+              <img src="./images/projects/qual-e-a-boa.svg" alt="Capa ilustrativa do aplicativo Qual é a Boa?" width="1200" height="675" loading="lazy" decoding="async" />
+              <span class="preview-tag">APLICATIVO MOBILE · ARTE ILUSTRATIVA</span>
+            </div>
+            <div class="projeto-info">
+              <span class="status-chip" data-status="dev"><i></i>EM DESENVOLVIMENTO</span>
+              <h3>Qual é a Boa?</h3>
+              <p>Aplicativo mobile para montar listas de opções e sortear uma escolha, inclusive ao chacoalhar o celular.</p>
+              <dl class="proj-facts">
+                <div><dt>Objetivo</dt><dd>Ajudar a decidir entre várias opções de forma rápida e divertida.</dd></div>
+                <div><dt>Principais funcionalidades</dt>
+                  <dd><ul class="proj-features">
+                    <li>Lista de opções com adicionar e remover</li>
+                    <li>Sorteio aleatório de uma opção</li>
+                    <li>Sorteio ao chacoalhar o celular</li>
+                    <li>Vibração ao anunciar o resultado</li>
+                  </ul></dd></div>
+              </dl>
+              <div class="tech-tags"><span>React Native</span><span>Expo</span><span>JavaScript</span></div>
+              <div class="projeto-links">
+                <a href="https://github.com/GustavoNunes7/Qual-e-a-boa-app" class="btn btn-ghost" target="_blank"
+                  rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
               </div>
-              <div class="projeto-info">
-                <span class="status-chip"><i></i>APP EM DESENVOLVIMENTO</span>
-                <h3>Qual é a Boa?</h3>
-                <p>Aplicativo mobile para montar listas de opções e sortear uma escolha, inclusive ao chacoalhar o celular.</p>
-                <div class="tech-tags"><span>React Native</span><span>Expo</span><span>JavaScript</span></div>
-                <div class="projeto-links">
-                  <a href="https://github.com/GustavoNunes7/Qual-e-a-boa-app" class="btn btn-ghost" target="_blank"
-                    rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-                </div>
-              </div>
-              <span class="glare" aria-hidden="true"></span>
-            </article>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
 
-            <article class="projeto-card normal px" data-reveal data-tilt style="--d: 1">
-              <div class="projeto-preview project-cover">
-                <img src="./images/projects/capivarinha.svg" alt="Capa ilustrativa do Jogo da Capivarinha" width="1200" height="675" loading="lazy" decoding="async" />
-                <span class="preview-tag">PYTHON · CLIENTE / SERVIDOR</span>
+          <article class="projeto-card featured px green" data-project="Jogo da Capivarinha" data-status="published" data-reveal data-tilt>
+            <div class="projeto-preview project-cover">
+              <span class="featured-flag">PROJETO PRINCIPAL · 03</span>
+              <img src="./images/projects/capivarinha.svg" alt="Capa ilustrativa do Jogo da Capivarinha" width="1200" height="675" loading="lazy" decoding="async" />
+              <span class="preview-tag">PYTHON · CLIENTE / SERVIDOR · ARTE ILUSTRATIVA</span>
+            </div>
+            <div class="projeto-info">
+              <span class="status-chip" data-status="published"><i></i>PUBLICADO NO GITHUB</span>
+              <h3>Jogo da Capivarinha</h3>
+              <p>Jogo em Python com comunicação entre cliente e servidor, no qual o jogador tenta descobrir o número e salvar a capivarinha.</p>
+              <dl class="proj-facts">
+                <div><dt>Objetivo</dt><dd>Explorar a comunicação entre cliente e servidor em Python por meio de um jogo de adivinhação.</dd></div>
+                <div><dt>Principais funcionalidades</dt>
+                  <dd><ul class="proj-features">
+                    <li>Cliente e servidor conectados por WebSockets</li>
+                    <li>Adivinhar um número de 1 a 100</li>
+                    <li>3 chances para salvar a capivarinha</li>
+                  </ul></dd></div>
+              </dl>
+              <div class="tech-tags"><span>Python</span><span>WebSockets</span><span>Asyncio</span></div>
+              <div class="projeto-links">
+                <a href="https://github.com/GustavoNunes7/Jogo-da-Capivarinha" class="btn btn-ghost" target="_blank"
+                  rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
               </div>
-              <div class="projeto-info">
-                <span class="status-chip"><i></i>PROJETO NO GITHUB</span>
-                <h3>Jogo da Capivarinha</h3>
-                <p>Jogo em Python com comunicação entre cliente e servidor, no qual o jogador tenta descobrir o número e salvar a capivarinha.</p>
-                <div class="tech-tags"><span>Python</span><span>WebSockets</span><span>Asyncio</span></div>
-                <div class="projeto-links">
-                  <a href="https://github.com/GustavoNunes7/Jogo-da-Capivarinha" class="btn btn-ghost" target="_blank"
-                    rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-                </div>
-              </div>
-              <span class="glare" aria-hidden="true"></span>
-            </article>
-          </div>
+            </div>
+            <span class="glare" aria-hidden="true"></span>
+          </article>
+
+          <aside class="more-projects px" data-reveal>
+            <span class="pxi" data-px="code"></span>
+            <div>
+              <h3>Outros projetos</h3>
+              <p>Demais repositórios e estudos ficam disponíveis no meu GitHub.</p>
+            </div>
+            <a href="https://github.com/GustavoNunes7?tab=repositories" class="link-px" target="_blank" rel="noopener noreferrer">Ver repositórios ↗</a>
+          </aside>
         </div>
       </div>
     </section>
@@ -350,8 +438,8 @@
     <section class="section" id="trajetoria" aria-labelledby="t-traj">
       <div class="container">
         <header class="sec-head" data-reveal>
-          <span class="sec-idx">// 04 · TIMELINE.map</span>
-          <h2 class="sec-title" id="t-traj">Trajetória</h2>
+          <span class="sec-idx">// 04 · JOURNEY.map</span>
+          <h2 class="sec-title" id="t-traj">Trajetória <span>Journey</span></h2>
         </header>
 
         <div class="timeline" id="timeline">
@@ -381,6 +469,33 @@
               <p>Aprendiz em construção...... 💻</p>
             </div>
           </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"><span class="pxi" data-px="trophy"></span></div>
+            <div class="timeline-content px green" data-reveal="right">
+              <span class="timeline-date">2025</span>
+              <h3>Eventos e competições no SESI</h3>
+              <p>Participação na Selibi 2025 e no Canguru de Matemática 2025.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"><span class="pxi" data-px="scroll"></span></div>
+            <div class="timeline-content px" data-reveal="left">
+              <span class="timeline-date">2026</span>
+              <h3>Gemini Academy para Universitários</h3>
+              <p>Certificado do Gemini Academy para Universitários 2026, sobre as funcionalidades do Google Gemini.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"><span class="pxi" data-px="rocket"></span></div>
+            <div class="timeline-content px green" data-reveal="right">
+              <span class="timeline-date">EM ANDAMENTO</span>
+              <h3>Projetos de desenvolvimento</h3>
+              <p>TechCampus (sistema web com IoT) e Qual é a Boa? (app mobile) em desenvolvimento, além do Jogo da Capivarinha publicado no GitHub.</p>
+            </div>
+          </div>
         </div>
 
         <div class="mission px green" data-reveal><b>CURRENT MISSION</b><span>evolução constante na tecnologia<span
@@ -398,7 +513,7 @@
         </header>
 
         <div class="certificate-grid certificate-overview">
-          <a class="cert cert-summary px" href="./Cursos/senai.html" target="_blank" rel="noopener noreferrer" data-reveal data-tilt>
+          <a class="cert cert-summary px" href="./Cursos/senai.html" target="_blank" rel="noopener" data-reveal data-tilt>
             <div class="cert-thumb"><span class="cert-badge">17 CERTIFICADOS</span><img src="./images/cursos/senai.jpg" alt="Identidade visual dos cursos SENAI" width="560" height="400" loading="lazy" decoding="async" /></div>
             <div class="cert-info">
               <h3>SENAI</h3>
@@ -408,7 +523,7 @@
             <span class="glare" aria-hidden="true"></span>
           </a>
 
-          <a class="cert cert-summary px" href="./Cursos/sebrae.html" target="_blank" rel="noopener noreferrer" data-reveal data-tilt style="--d: 1">
+          <a class="cert cert-summary px" href="./Cursos/sebrae.html" target="_blank" rel="noopener" data-reveal data-tilt style="--d: 1">
             <div class="cert-thumb"><span class="cert-badge">7 CERTIFICADOS</span><img src="./images/cursos/sebrae.jpg" alt="Identidade visual dos cursos SEBRAE" width="560" height="400" loading="lazy" decoding="async" /></div>
             <div class="cert-info">
               <h3>SEBRAE</h3>
@@ -418,7 +533,7 @@
             <span class="glare" aria-hidden="true"></span>
           </a>
 
-          <a class="cert cert-summary px" href="./Cursos/sesi.html" target="_blank" rel="noopener noreferrer" data-reveal data-tilt style="--d: 2">
+          <a class="cert cert-summary px" href="./Cursos/sesi.html" target="_blank" rel="noopener" data-reveal data-tilt style="--d: 2">
             <div class="cert-thumb"><span class="cert-badge">2 CERTIFICADOS</span><img src="./images/cursos/sesi.jpg" alt="Identidade visual dos certificados SESI" width="560" height="400" loading="lazy" decoding="async" /></div>
             <div class="cert-info">
               <h3>SESI</h3>
@@ -428,7 +543,7 @@
             <span class="glare" aria-hidden="true"></span>
           </a>
 
-          <a class="cert cert-summary px" href="./Cursos/fundacaoBradesco.html" target="_blank" rel="noopener noreferrer" data-reveal data-tilt style="--d: 3">
+          <a class="cert cert-summary px" href="./Cursos/fundacaoBradesco.html" target="_blank" rel="noopener" data-reveal data-tilt style="--d: 3">
             <div class="cert-thumb"><span class="cert-badge">1 CERTIFICADO</span><img src="./images/cursos/fundacaoBradesco.jpg" alt="Identidade visual da Fundação Bradesco" width="560" height="400" loading="lazy" decoding="async" /></div>
             <div class="cert-info">
               <h3>Fundação Bradesco</h3>
@@ -438,7 +553,7 @@
             <span class="glare" aria-hidden="true"></span>
           </a>
 
-          <a class="cert cert-summary px" href="./Cursos/outrosCursos.html" target="_blank" rel="noopener noreferrer" data-reveal data-tilt style="--d: 4">
+          <a class="cert cert-summary px" href="./Cursos/outrosCursos.html" target="_blank" rel="noopener" data-reveal data-tilt style="--d: 4">
             <div class="cert-thumb cert-thumb-book"><span class="cert-badge">2 CERTIFICADOS</span><img src="./images/cursos/outros-cursos-livro.svg" alt="Livro pixelado representando outros cursos e conhecimentos complementares" width="560" height="315" loading="lazy" decoding="async" /></div>
             <div class="cert-info">
               <h3>Outros Cursos</h3>
@@ -447,6 +562,28 @@
             </div>
             <span class="glare" aria-hidden="true"></span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TERMINAL ============ -->
+    <section class="section" id="terminal" aria-labelledby="t-term">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-idx">// 07 · TERMINAL.exe</span>
+          <h2 class="sec-title" id="t-term">Terminal <span>Interativo</span></h2>
+          <p class="sec-sub">Um recurso extra para explorar o portfólio por comandos. A navegação tradicional continua disponível.</p>
+        </header>
+
+        <div class="term-window px green" data-reveal id="termWindow">
+          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>gn@portfolio:~$ terminal</span></div>
+          <div class="term-screen" id="termScreen" role="log" aria-live="polite" aria-label="Saída do terminal" tabindex="0"></div>
+          <form class="term-form" id="termForm" autocomplete="off">
+            <label class="term-prompt" for="termInput">gn@portfolio:~$</label>
+            <input id="termInput" class="term-input" type="text" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="digite um comando…" />
+            <button class="term-send" type="submit" aria-label="Executar comando">↵</button>
+          </form>
+          <div class="term-chips" id="termChips" role="group" aria-label="Comandos rápidos"></div>
         </div>
       </div>
     </section>
@@ -513,23 +650,14 @@
     </div>
   </footer>
 
-  <div class="game-settings" id="gameSettings">
-    <button class="settings-trigger" id="settingsTrigger" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-label="Abrir configurações">⚙</button>
-    <section class="settings-panel" id="settingsPanel" aria-label="Configurações do portfólio" hidden>
-      <div class="settings-heading"><span>CONFIGURAÇÕES</span><button type="button" class="settings-close" id="settingsClose" aria-label="Fechar">×</button></div>
-      <div class="settings-row"><div><strong>Tema</strong><small>Aparência do portfólio</small></div><button class="settings-option" id="themeToggle" type="button" aria-pressed="false">MODO ESCURO</button></div>
-      <div class="settings-row"><div><strong>Música</strong><small>Trilha sonora 8-bit</small></div><button class="settings-switch" id="musicToggle" type="button" role="switch" aria-checked="true">ON</button></div>
-      <div class="settings-row"><div><strong>Efeitos sonoros</strong><small>Cliques e navegação</small></div><button class="settings-switch" id="effectsToggle" type="button" role="switch" aria-checked="true">ON</button></div>
-      <label class="settings-volume" for="audioVolume"><span>VOLUME GERAL</span><input id="audioVolume" type="range" min="0" max="100" value="72" /></label>
-      <p class="settings-hint">O áudio começa após sua primeira interação com a página.</p>
-    </section>
-  </div>
-
   <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo"><span class="pxi"
       data-px="arrowup"></span></button>
 
   <script src="js/pixel-art.js"></script>
-  <script src="script.js?v=20261117-1"></script>
+  <script src="js/gn-data.js?v=20261117-2"></script>
+  <script src="js/gn-core.js?v=20261117-2"></script>
+  <script src="script.js?v=20261117-2"></script>
+  <script src="js/gn-home.js?v=20261117-2"></script>
 </body>
 
 </html>

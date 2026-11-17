@@ -6,10 +6,22 @@
     <title>Cursos SEBRAE | Gustavo Nunes</title>
     <meta name="description" content="Trilha Vitrine Sebrae — desenvolvimento pessoal, atitude empreendedora e criatividade." />
     <meta name="theme-color" content="#05070B" />
+    <meta name="color-scheme" content="dark light" />
     <link rel="icon" href="../images/Logo.jpg" />
     <link rel="preload" href="../fonts/pixelify-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="../styles.css?v=20261117-1" />
-    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="../styles.css?v=20261117-2" />
+    <link rel="stylesheet" href="../css/gn-extra.css?v=20261117-2" />
+      <script>
+    /* aplica tema/modo salvos antes da primeira pintura (evita "piscar") */
+    (function () {
+      var d = document.documentElement; d.classList.add('js');
+      try {
+        var s = JSON.parse(localStorage.getItem('gn-game-settings') || '{}') || {};
+        if (s.theme === 'light') d.setAttribute('data-theme', 'light');
+        if (s.immersive === true) d.setAttribute('data-immersive', 'on');
+      } catch (e) { /* ignora */ }
+    })();
+  </script>
   </head>
   <body data-page="certificados">
     <a class="skip-link" href="#main">Pular para o conteúdo</a>
@@ -34,9 +46,15 @@
             <li><a href="../index.html#contato" class="nav-link btn-nav">Contato</a></li>
           </ul>
         </nav>
+      <div class="nav-tools">
+        <a class="nav-icon-btn" href="../index.html#terminal" aria-label="Abrir o terminal interativo" title="Terminal"><span class="pxi" data-px="terminal"></span></a>
+        <div class="game-settings" id="gameSettings">
+          <button class="settings-trigger" id="settingsTrigger" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-haspopup="dialog" aria-label="Abrir configurações" title="Configurações"><span class="pxi" data-px="gear"></span></button>
+        </div>
         <button class="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
           <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
         </button>
+      </div>
       </div>
       <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar" id="progressBar"></div></div>
     </header>
@@ -137,20 +155,10 @@
         <p>&copy; 2026 Gustavo Nunes. Projetado e desenvolvido com tecnologia e precisão.</p>
       </div>
     </footer>
-  <div class="game-settings" id="gameSettings">
-    <button class="settings-trigger" id="settingsTrigger" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-label="Abrir configurações">⚙</button>
-    <section class="settings-panel" id="settingsPanel" aria-label="Configurações do portfólio" hidden>
-      <div class="settings-heading"><span>CONFIGURAÇÕES</span><button type="button" class="settings-close" id="settingsClose" aria-label="Fechar">×</button></div>
-      <div class="settings-row"><div><strong>Tema</strong><small>Aparência do portfólio</small></div><button class="settings-option" id="themeToggle" type="button" aria-pressed="false">MODO ESCURO</button></div>
-      <div class="settings-row"><div><strong>Música</strong><small>Trilha sonora 8-bit</small></div><button class="settings-switch" id="musicToggle" type="button" role="switch" aria-checked="true">ON</button></div>
-      <div class="settings-row"><div><strong>Efeitos sonoros</strong><small>Cliques e navegação</small></div><button class="settings-switch" id="effectsToggle" type="button" role="switch" aria-checked="true">ON</button></div>
-      <label class="settings-volume" for="audioVolume"><span>VOLUME GERAL</span><input id="audioVolume" type="range" min="0" max="100" value="72" /></label>
-      <p class="settings-hint">O áudio começa após sua primeira interação com a página.</p>
-    </section>
-  </div>
     <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo"><span class="pxi" data-px="arrowup"></span></button>
 
     <script src="../js/pixel-art.js"></script>
-    <script src="../script.js?v=20261117-1"></script>
+    <script src="../js/gn-core.js?v=20261117-2"></script>
+    <script src="../script.js?v=20261117-2"></script>
   </body>
 </html>
