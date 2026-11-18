@@ -22,9 +22,9 @@
   try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch { saved = {}; }
   const state = {
     theme: saved.theme === 'light' ? 'light' : 'dark',
-    sound: true,
-    music: false,
-    effects: true,
+    sound: saved.sound !== false,
+    music: saved.music === true,
+    effects: saved.effects !== false,
     musicVol: clampVol(saved.musicVol ?? saved.volume, DEFAULTS.musicVol), // "volume" = chave antiga
     sfxVol: clampVol(saved.sfxVol, DEFAULTS.sfxVol),
     immersive: saved.immersive === true,
