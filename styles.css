@@ -722,3 +722,8 @@ html:not(.js) .boot { display: none; }
 }
 
 /* Configurações, tema claro, RPG e recursos novos: ver css/gn-extra.css */
+
+/* Certificados em SPA: a troca de categoria não recarrega o documento nem reinicia o áudio. */
+#certificateDetail[hidden], .certificate-overview[hidden] { display: none !important; }
+.certificate-detail { padding: 2rem 0; }
+.certificate-back { margin: 0 0 1.5rem; }
