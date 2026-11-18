@@ -343,6 +343,47 @@
     Audio.sfx('click');
   }, true);
 
+  /* ---------- Visualizador interno de certificados (preserva a página e o áudio) ---------- */
+  let certViewer = null;
+  function openCertificateViewer(url) {
+    if (!certViewer) {
+      certViewer = document.createElement('div');
+      certViewer.id = 'gnCertificateViewer';
+      certViewer.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(3,6,10,.96);display:flex;flex-direction:column;padding:clamp(8px,2vw,20px);';
+      certViewer.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 4px;color:#e8eef7;font:600 12px/1.4 system-ui,sans-serif;letter-spacing:.08em;">
+          <span>GN · CERTIFICADOS</span>
+          <button type="button" id="gnCertificateClose" aria-label="Fechar certificado" style="border:1px solid #334155;background:#111827;color:#fff;border-radius:8px;padding:9px 14px;cursor:pointer;font:inherit;">FECHAR ✕</button>
+        </div>
+        <iframe id="gnCertificateFrame" title="Visualizador de certificados" style="flex:1;min-height:0;width:100%;border:1px solid #263244;border-radius:12px;background:#05070b;"></iframe>`;
+      document.body.append(certViewer);
+      certViewer.querySelector('#gnCertificateClose').addEventListener('click', closeCertificateViewer);
+      certViewer.addEventListener('click', (e) => { if (e.target === certViewer) closeCertificateViewer(); });
+    }
+    certViewer.hidden = false;
+    certViewer.style.display = 'flex';
+    certViewer.querySelector('#gnCertificateFrame').src = url;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCertificateViewer() {
+    if (!certViewer) return;
+    certViewer.querySelector('#gnCertificateFrame').src = 'about:blank';
+    certViewer.hidden = true;
+    certViewer.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+    const href = link.getAttribute('href') || '';
+    if (!/^\\.?\\/?Cursos\\//i.test(href)) return;
+    e.preventDefault();
+    openCertificateViewer(new URL(href, location.href).href);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && certViewer && !certViewer.hidden) closeCertificateViewer();
+  });
+
   /* ---------- Inicialização ---------- */
   applyTheme();
   applyImmersive();
