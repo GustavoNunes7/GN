@@ -727,3 +727,71 @@ html:not(.js) .boot { display: none; }
 #certificateDetail[hidden], .certificate-overview[hidden] { display: none !important; }
 .certificate-detail { padding: 2rem 0; }
 .certificate-back { margin: 0 0 1.5rem; }
+
+/* ---------- Projetos: cards organizados para leitura e apresentação ---------- */
+.projects-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+.projects-layout > .project-main {
+  grid-column: 1 / -1;
+}
+.projects-layout > .project-secondary {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  align-content: start;
+  min-width: 0;
+}
+.projects-layout > .project-secondary .project-cover {
+  min-height: 205px;
+  border: 0;
+  border-bottom: 2px solid var(--line);
+}
+.projects-layout > .project-secondary .projeto-info {
+  min-width: 0;
+  padding: 20px;
+  justify-content: flex-start;
+  overflow-wrap: anywhere;
+}
+.projects-layout > .project-secondary .projeto-info h3 {
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+.projects-layout > .project-secondary .proj-features {
+  columns: 1;
+}
+.projects-layout > .project-secondary .projeto-preview > img {
+  object-fit: contain;
+  padding: 12px;
+}
+.projects-layout > .more-projects {
+  grid-column: 1 / -1;
+}
+.techcampus-cover {
+  background: radial-gradient(ellipse at center, rgba(78,168,222,.18), transparent 65%), linear-gradient(135deg,#071326,#0a1c2d 58%,#06251f);
+}
+.techcampus-cover > img {
+  object-fit: contain !important;
+  padding: clamp(22px,5vw,58px);
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,.4));
+}
+.qualeboa-cover {
+  background: linear-gradient(135deg,#17102f,#24174a 55%,#101b35);
+}
+.qualeboa-cover > img {
+  object-fit: contain !important;
+  padding: 10px;
+}
+@media (max-width: 768px) {
+  .projects-layout { grid-template-columns: minmax(0,1fr); gap: 18px; }
+  .projects-layout > .project-main,
+  .projects-layout > .more-projects { grid-column: auto; }
+  .projects-layout > .project-main { grid-template-columns: minmax(0,1fr); }
+  .projects-layout > .project-main .project-cover {
+    min-height: 240px;
+    border: 0;
+    border-bottom: 2px solid var(--line);
+  }
+  .projects-layout > .project-secondary .project-cover { min-height: 190px; }
+}
