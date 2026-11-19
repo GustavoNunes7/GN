@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+<title id="title">TechCampus</title><desc id="desc">Identidade visual TechCampus com ícone de campus em pixel art.</desc>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#55e6a5"/><stop offset="1" stop-color="#4ea8de"/></linearGradient></defs>
+<g shape-rendering="crispEdges" transform="translate(215 42)">
+<path d="M30 45h230v24H30zM54 69h182v24H54zM78 93h134v24H78z" fill="url(#g)"/>
+<path d="M0 117h290v145H0z" fill="#0b1930" stroke="#55e6a5" stroke-width="8"/>
+<path d="M24 141h42v42H24zM82 141h42v42H82zM140 141h42v42h-42zM198 141h42v42h-42z" fill="#4ea8de"/>
+<path d="M105 204h80v58h-80z" fill="#55e6a5"/>
+<path d="M0 262h290v18H0z" fill="#55e6a5"/>
+</g>
+<text x="360" y="326" text-anchor="middle" fill="#f5f7fa" font-family="Arial,sans-serif" font-size="43" font-weight="800" letter-spacing="5">TECHCAMPUS</text>
+</svg>
